@@ -10,4 +10,8 @@ class OfflineRecipesRepository(private val recipeDao: RecipeDao) : RecipesReposi
     override fun getAllSoups(): Flow<List<Recipe>> {
         return recipeDao.getAllSoups()
     }
+
+    override fun getRecipe(id: Int): Flow<RecipeWithIngredientsAndSteps> {
+        return recipeDao.getRecipe(id)
+    }
 }
