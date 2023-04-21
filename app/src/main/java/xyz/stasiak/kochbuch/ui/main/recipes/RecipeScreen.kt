@@ -11,14 +11,18 @@ import androidx.compose.ui.unit.dp
 import xyz.stasiak.kochbuch.data.Recipe
 
 @Composable
-fun RecipeScreen(recipes: List<Recipe>, modifier: Modifier = Modifier) {
+fun RecipeScreen(
+    recipes: List<Recipe>,
+    navigateToRecipe: (Int) -> Unit,
+    modifier: Modifier = Modifier
+) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(150.dp),
         modifier = modifier.fillMaxWidth(),
         contentPadding = PaddingValues(4.dp)
     ) {
         items(recipes, key = { it.id }) { recipe ->
-            RecipeCard(recipe = recipe, onRecipeClicked = {})
+            RecipeCard(recipe = recipe, onRecipeClicked = { navigateToRecipe(recipe.id) })
         }
     }
 }

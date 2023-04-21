@@ -20,6 +20,7 @@ import xyz.stasiak.kochbuch.ui.main.recipes.RecipeScreen
 @Composable
 fun MainScreen(
     navController: NavHostController,
+    navigateToRecipe: (Int) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
@@ -38,10 +39,10 @@ fun MainScreen(
                 InfoScreen()
             }
             composable(route = BottomSoupDestination.route) {
-                RecipeScreen(recipes = soups)
+                RecipeScreen(recipes = soups, navigateToRecipe = navigateToRecipe)
             }
             composable(route = BottomMainCourseDestination.route) {
-                RecipeScreen(recipes = mainCourses)
+                RecipeScreen(recipes = mainCourses, navigateToRecipe = navigateToRecipe)
             }
         }
     }
