@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Kochbuch</string>
+    <string name="info">Informacje</string>
+    <string name="main_course">Dania główne</string>
+    <string name="soup">Zupy</string>
+    <string name="empty" />
 </resources>
