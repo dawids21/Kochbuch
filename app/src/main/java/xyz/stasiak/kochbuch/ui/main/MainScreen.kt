@@ -13,10 +13,9 @@ import androidx.navigation.compose.composable
 import xyz.stasiak.kochbuch.ui.AppViewModelProvider
 import xyz.stasiak.kochbuch.ui.main.info.BottomInfoDestination
 import xyz.stasiak.kochbuch.ui.main.info.InfoScreen
-import xyz.stasiak.kochbuch.ui.main.maincourse.BottomMainCourseDestination
-import xyz.stasiak.kochbuch.ui.main.maincourse.MainCourseScreen
-import xyz.stasiak.kochbuch.ui.main.soup.BottomSoupDestination
-import xyz.stasiak.kochbuch.ui.main.soup.SoupScreen
+import xyz.stasiak.kochbuch.ui.main.recipes.BottomMainCourseDestination
+import xyz.stasiak.kochbuch.ui.main.recipes.BottomSoupDestination
+import xyz.stasiak.kochbuch.ui.main.recipes.RecipeScreen
 
 @Composable
 fun MainScreen(
@@ -39,10 +38,10 @@ fun MainScreen(
                 InfoScreen()
             }
             composable(route = BottomSoupDestination.route) {
-                SoupScreen(recipes = soups)
+                RecipeScreen(recipes = soups)
             }
             composable(route = BottomMainCourseDestination.route) {
-                MainCourseScreen(recipes = mainCourses)
+                RecipeScreen(recipes = mainCourses)
             }
         }
     }

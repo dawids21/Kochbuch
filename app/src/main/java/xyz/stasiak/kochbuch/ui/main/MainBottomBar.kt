@@ -11,8 +11,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import xyz.stasiak.kochbuch.ui.main.info.BottomInfoDestination
-import xyz.stasiak.kochbuch.ui.main.maincourse.BottomMainCourseDestination
-import xyz.stasiak.kochbuch.ui.main.soup.BottomSoupDestination
+import xyz.stasiak.kochbuch.ui.main.recipes.BottomMainCourseDestination
+import xyz.stasiak.kochbuch.ui.main.recipes.BottomSoupDestination
 
 @Composable
 fun MainBottomBar(navController: NavController) {

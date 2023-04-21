@@ -1,4 +1,4 @@
-package xyz.stasiak.kochbuch.ui.main.maincourse
+package xyz.stasiak.kochbuch.ui.main.recipes
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
