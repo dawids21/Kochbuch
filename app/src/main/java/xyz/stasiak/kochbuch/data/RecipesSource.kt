@@ -4,13 +4,56 @@ import xyz.stasiak.kochbuch.R
 
 object RecipesSource {
     val recipes = listOf(
-        RecipeWithSteps(
+        RecipeWithIngredientsAndSteps(
             recipe = Recipe(
                 id = 1,
                 name = "Kotlet schabowy",
                 type = RecipeType.MAIN_COURSE,
                 image = R.drawable.main_course,
-                ingredients = "Schab,Mąka,Jajko,Sól,Pieprz,Olej"
+            ),
+            ingredients = listOf(
+                RecipeIngredient(
+                    id = 1,
+                    recipeId = 1,
+                    name = "Schab",
+                    amount = 1f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 2,
+                    recipeId = 1,
+                    name = "Mąka",
+                    amount = 0.5f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 3,
+                    recipeId = 1,
+                    name = "Jajko",
+                    amount = 1f,
+                    unit = "szt"
+                ),
+                RecipeIngredient(
+                    id = 4,
+                    recipeId = 1,
+                    name = "Sól",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                ),
+                RecipeIngredient(
+                    id = 5,
+                    recipeId = 1,
+                    name = "Pieprz",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                ),
+                RecipeIngredient(
+                    id = 6,
+                    recipeId = 1,
+                    name = "Olej",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                )
             ),
             steps = listOf(
                 RecipeStep(
@@ -33,13 +76,56 @@ object RecipesSource {
                 )
             )
         ),
-        RecipeWithSteps(
+        RecipeWithIngredientsAndSteps(
             recipe = Recipe(
                 id = 2,
                 name = "Kotlet mielony",
                 type = RecipeType.MAIN_COURSE,
                 image = R.drawable.main_course,
-                ingredients = "Mięso mielone,Mąka,Jajko,Sól,Pieprz,Olej"
+            ),
+            ingredients = listOf(
+                RecipeIngredient(
+                    id = 7,
+                    recipeId = 2,
+                    name = "Mięso mielone",
+                    amount = 1f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 8,
+                    recipeId = 2,
+                    name = "Mąka",
+                    amount = 0.5f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 9,
+                    recipeId = 2,
+                    name = "Jajko",
+                    amount = 1f,
+                    unit = "szt"
+                ),
+                RecipeIngredient(
+                    id = 10,
+                    recipeId = 2,
+                    name = "Sól",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                ),
+                RecipeIngredient(
+                    id = 11,
+                    recipeId = 2,
+                    name = "Pieprz",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                ),
+                RecipeIngredient(
+                    id = 12,
+                    recipeId = 2,
+                    name = "Olej",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                )
             ),
             steps = listOf(
                 RecipeStep(
@@ -62,13 +148,56 @@ object RecipesSource {
                 )
             )
         ),
-        RecipeWithSteps(
+        RecipeWithIngredientsAndSteps(
             recipe = Recipe(
                 id = 3,
                 name = "Kotlet drobiowy",
                 type = RecipeType.MAIN_COURSE,
                 image = R.drawable.main_course,
-                ingredients = "Drobiowe mięso mielone,Mąka,Jajko,Sól,Pieprz,Olej"
+            ),
+            ingredients = listOf(
+                RecipeIngredient(
+                    id = 13,
+                    recipeId = 3,
+                    name = "Drobiowe mięso mielone",
+                    amount = 1f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 14,
+                    recipeId = 3,
+                    name = "Mąka",
+                    amount = 0.5f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 15,
+                    recipeId = 3,
+                    name = "Jajko",
+                    amount = 1f,
+                    unit = "szt"
+                ),
+                RecipeIngredient(
+                    id = 16,
+                    recipeId = 3,
+                    name = "Sól",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                ),
+                RecipeIngredient(
+                    id = 17,
+                    recipeId = 3,
+                    name = "Pieprz",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                ),
+                RecipeIngredient(
+                    id = 18,
+                    recipeId = 3,
+                    name = "Olej",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                )
             ),
             steps = listOf(
                 RecipeStep(
@@ -91,13 +220,56 @@ object RecipesSource {
                 )
             )
         ),
-        RecipeWithSteps(
+        RecipeWithIngredientsAndSteps(
             recipe = Recipe(
                 id = 4,
                 name = "Kotlet wołowy",
                 type = RecipeType.MAIN_COURSE,
                 image = R.drawable.main_course,
-                ingredients = "Wołowe mięso mielone,Mąka,Jajko,Sól,Pieprz,Olej"
+            ),
+            ingredients = listOf(
+                RecipeIngredient(
+                    id = 19,
+                    recipeId = 4,
+                    name = "Wołowe mięso mielone",
+                    amount = 1f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 20,
+                    recipeId = 4,
+                    name = "Mąka",
+                    amount = 0.5f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 21,
+                    recipeId = 4,
+                    name = "Jajko",
+                    amount = 1f,
+                    unit = "szt"
+                ),
+                RecipeIngredient(
+                    id = 22,
+                    recipeId = 4,
+                    name = "Sól",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                ),
+                RecipeIngredient(
+                    id = 23,
+                    recipeId = 4,
+                    name = "Pieprz",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                ),
+                RecipeIngredient(
+                    id = 24,
+                    recipeId = 4,
+                    name = "Olej",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                )
             ),
             steps = listOf(
                 RecipeStep(
@@ -120,13 +292,56 @@ object RecipesSource {
                 )
             )
         ),
-        RecipeWithSteps(
+        RecipeWithIngredientsAndSteps(
             recipe = Recipe(
                 id = 5,
                 name = "Kotlet z indyka",
                 type = RecipeType.MAIN_COURSE,
                 image = R.drawable.main_course,
-                ingredients = "Indykowe mięso mielone,Mąka,Jajko,Sól,Pieprz,Olej"
+            ),
+            ingredients = listOf(
+                RecipeIngredient(
+                    id = 25,
+                    recipeId = 5,
+                    name = "Indykowe mięso mielone",
+                    amount = 1f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 26,
+                    recipeId = 5,
+                    name = "Mąka",
+                    amount = 0.5f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 27,
+                    recipeId = 5,
+                    name = "Jajko",
+                    amount = 1f,
+                    unit = "szt"
+                ),
+                RecipeIngredient(
+                    id = 28,
+                    recipeId = 5,
+                    name = "Sól",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                ),
+                RecipeIngredient(
+                    id = 29,
+                    recipeId = 5,
+                    name = "Pieprz",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                ),
+                RecipeIngredient(
+                    id = 30,
+                    recipeId = 5,
+                    name = "Olej",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                )
             ),
             steps = listOf(
                 RecipeStep(
@@ -149,13 +364,49 @@ object RecipesSource {
                 )
             )
         ),
-        RecipeWithSteps(
+        RecipeWithIngredientsAndSteps(
             recipe = Recipe(
                 id = 6,
                 name = "Zupa pomidorowa",
                 type = RecipeType.SOUP,
                 image = R.drawable.soup,
-                ingredients = "Pomidory,Cebula,Olej,Mąka,Bulion,Sól,Pieprz"
+            ),
+            ingredients = listOf(
+                RecipeIngredient(
+                    id = 31,
+                    recipeId = 6,
+                    name = "Cebula",
+                    amount = 1f,
+                    unit = "szt"
+                ),
+                RecipeIngredient(
+                    id = 32,
+                    recipeId = 6,
+                    name = "Pomidory",
+                    amount = 1f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 33,
+                    recipeId = 6,
+                    name = "Mąka",
+                    amount = 0.5f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 34,
+                    recipeId = 6,
+                    name = "Bulion",
+                    amount = 1f,
+                    unit = "l"
+                ),
+                RecipeIngredient(
+                    id = 35,
+                    recipeId = 6,
+                    name = "Olej",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                )
             ),
             steps = listOf(
                 RecipeStep(
@@ -184,13 +435,49 @@ object RecipesSource {
                 )
             )
         ),
-        RecipeWithSteps(
+        RecipeWithIngredientsAndSteps(
             recipe = Recipe(
                 id = 7,
                 name = "Zupa ogórkowa",
                 type = RecipeType.SOUP,
                 image = R.drawable.soup,
-                ingredients = "Ogórki,Cebula,Olej,Mąka,Bulion,Sól,Pieprz"
+            ),
+            ingredients = listOf(
+                RecipeIngredient(
+                    id = 36,
+                    recipeId = 7,
+                    name = "Ogórek",
+                    amount = 1f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 37,
+                    recipeId = 7,
+                    name = "Cebula",
+                    amount = 1f,
+                    unit = "szt"
+                ),
+                RecipeIngredient(
+                    id = 38,
+                    recipeId = 7,
+                    name = "Mąka",
+                    amount = 0.5f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 39,
+                    recipeId = 7,
+                    name = "Bulion",
+                    amount = 1f,
+                    unit = "l"
+                ),
+                RecipeIngredient(
+                    id = 40,
+                    recipeId = 7,
+                    name = "Olej",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                )
             ),
             steps = listOf(
                 RecipeStep(
@@ -219,13 +506,42 @@ object RecipesSource {
                 )
             )
         ),
-        RecipeWithSteps(
+        RecipeWithIngredientsAndSteps(
             recipe = Recipe(
                 id = 8,
                 name = "Zupa cebulowa",
                 type = RecipeType.SOUP,
                 image = R.drawable.soup,
-                ingredients = "Cebula,Olej,Mąka,Bulion,Sól,Pieprz"
+            ),
+            ingredients = listOf(
+                RecipeIngredient(
+                    id = 41,
+                    recipeId = 8,
+                    name = "Cebula",
+                    amount = 1f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 42,
+                    recipeId = 8,
+                    name = "Mąka",
+                    amount = 0.5f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 43,
+                    recipeId = 8,
+                    name = "Bulion",
+                    amount = 1f,
+                    unit = "l"
+                ),
+                RecipeIngredient(
+                    id = 44,
+                    recipeId = 8,
+                    name = "Olej",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                )
             ),
             steps = listOf(
                 RecipeStep(
@@ -248,13 +564,49 @@ object RecipesSource {
                 )
             )
         ),
-        RecipeWithSteps(
+        RecipeWithIngredientsAndSteps(
             recipe = Recipe(
                 id = 9,
                 name = "Zupa pieczarkowa",
                 type = RecipeType.SOUP,
                 image = R.drawable.soup,
-                ingredients = "Pieczarki,Cebula,Olej,Mąka,Bulion,Sól,Pieprz"
+            ),
+            ingredients = listOf(
+                RecipeIngredient(
+                    id = 45,
+                    recipeId = 9,
+                    name = "Pieczarki",
+                    amount = 1f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 46,
+                    recipeId = 9,
+                    name = "Cebula",
+                    amount = 1f,
+                    unit = "szt"
+                ),
+                RecipeIngredient(
+                    id = 47,
+                    recipeId = 9,
+                    name = "Mąka",
+                    amount = 0.5f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 48,
+                    recipeId = 9,
+                    name = "Bulion",
+                    amount = 1f,
+                    unit = "l"
+                ),
+                RecipeIngredient(
+                    id = 49,
+                    recipeId = 9,
+                    name = "Olej",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                )
             ),
             steps = listOf(
                 RecipeStep(
@@ -283,13 +635,49 @@ object RecipesSource {
                 )
             )
         ),
-        RecipeWithSteps(
+        RecipeWithIngredientsAndSteps(
             recipe = Recipe(
                 id = 10,
                 name = "Zupa grzybowa",
                 type = RecipeType.SOUP,
                 image = R.drawable.soup,
-                ingredients = "Grzyby,Cebula,Olej,Mąka,Bulion,Sól,Pieprz"
+            ),
+            ingredients = listOf(
+                RecipeIngredient(
+                    id = 50,
+                    recipeId = 10,
+                    name = "Grzyby",
+                    amount = 1f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 51,
+                    recipeId = 10,
+                    name = "Cebula",
+                    amount = 1f,
+                    unit = "szt"
+                ),
+                RecipeIngredient(
+                    id = 52,
+                    recipeId = 10,
+                    name = "Mąka",
+                    amount = 0.5f,
+                    unit = "kg"
+                ),
+                RecipeIngredient(
+                    id = 53,
+                    recipeId = 10,
+                    name = "Bulion",
+                    amount = 1f,
+                    unit = "l"
+                ),
+                RecipeIngredient(
+                    id = 54,
+                    recipeId = 10,
+                    name = "Olej",
+                    amount = 0.5f,
+                    unit = "łyżka"
+                )
             ),
             steps = listOf(
                 RecipeStep(
