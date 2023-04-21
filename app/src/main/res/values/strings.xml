@@ -4,4 +4,9 @@
     <string name="main_course">Dania główne</string>
     <string name="soup">Zupy</string>
     <string name="empty" />
+    <string name="recipe_details_share">Udostępnij składniki</string>
+    <string name="steps">Kroki</string>
+    <string name="ingredients">Składniki</string>
+    <string name="step_number">Krok %1$d</string>
+    <string name="time_format">Czas: %1$02d:%2$02d</string>
 </resources>

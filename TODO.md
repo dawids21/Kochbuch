@@ -28,7 +28,7 @@
     - [x] Ekran list składa się z trzech kart: info, zupy, dania główne
     - [x] Karta kategorii zawiera potrawy w formacie siatki
     - [x] Kliknięcie w kartę prezentuje jej szczegóły
-    - [ ] Szczegóły potrawy zawierają nazwę, obrazek, listę składników i sposób przygotowania
+    - [x] Szczegóły potrawy zawierają nazwę, obrazek, listę składników i sposób przygotowania
     - [ ] Szczegóły zawierają FAB, który przeysyła listę składników do innej aplikacji
     - [x] Wykorzystać motywy
     - [x] Wykorzystać fragmenty
