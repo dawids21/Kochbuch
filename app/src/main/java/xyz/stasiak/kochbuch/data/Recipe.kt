@@ -11,4 +11,5 @@ data class Recipe(
     val name: String,
     val type: RecipeType,
     @DrawableRes val image: Int,
+    val ingredients: String,
 )
