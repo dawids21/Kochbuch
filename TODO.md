@@ -1,0 +1,55 @@
+- [ ] Aplikacja typu lista-szczegoły
+    - [x] Dwa ekrany z listą i szczegółami
+    - [x] Korzysta z fragmentów
+    - [ ] Wersja dla telefonów i tabletów
+    - [x] Działa poprawnie po zmianie orientacji
+    - [x] Źródło danych inne niż tablica\*
+    - [x] Kod aplikacji w kotlinie \*
+    - [ ] Dodanie do szczegółów\*:
+        - [ ] Przelicznika kalorii według porcji
+        - [ ] Info o kaloryczności
+- [ ] Aplikacja typu lista-szczegoły - wersja na tablety
+- [ ] Dodanie fragmentu dynamicznego
+    - [ ] Dodać fragment minutnika
+    - [ ] Minutnik ma wyświetlać czas z dokładnością do sekundy
+    - [ ] Działa poprawnie po zmianie orientacji
+    - [ ] Działa poprawnie na telefonie i tablecie
+    - [ ] Ma przyciski:
+        - [ ] Start - uruchom odliczanie
+        - [ ] Stop - Wyłącz odliczanie po dojściu do zera
+        - [ ] Przerwij - Wyłącz odliczanie w dowolnym momencie
+    - [ ] Sygnał dźwiękowy po dojściu do zera
+    - [ ] Możliwość dostosowania wartości minutnika
+    - [ ] Kod w kotlinie\*
+    - [ ] Możliwość uruchomienia kilku minutników jednocześnie\*
+    - [ ] Narastający dźwięk\*
+    - [ ] Użycie ikon na przyciskach\*
+- [ ] Użycie biblioteki
+    - [x] Ekran list składa się z trzech kart: info, zupy, dania główne
+    - [x] Karta kategorii zawiera potrawy w formacie siatki
+    - [x] Kliknięcie w kartę prezentuje jej szczegóły
+    - [ ] Szczegóły potrawy zawierają nazwę, obrazek, listę składników i sposób przygotowania
+    - [ ] Szczegóły zawierają FAB, który przeysyła listę składników do innej aplikacji
+    - [x] Wykorzystać motywy
+    - [x] Wykorzystać fragmenty
+    - [ ] Działa poprawnie po zmianie orientacji
+    - [ ] Każdy ekran ma mieć pasek aplikacji w postaci paska narzędzi
+    - [ ] Ekran szczegółów jest przewijany w pionie razem z paskiem aplikacji
+    - [ ] Obrazek na ekranie szczegółów ma się pojawić na pasku aplikacji, ale ma się razem z nim
+      zwijać
+    - [ ] Przechodzenie między kartami ma się odbywać za pomocą gestu przeciągnięcia
+    - [x] Kod w kotlinie\*
+    - [ ] Dane umieszczone poza urządzeniem\*
+    - [x] Wykorzystanie motywów z material design\*
+    - [ ] Dodanie do paska aplikacji akcji\*
+    - [ ] Dodanie do paska aplikacji opcji wyszukiwania przepisów, które zawierają dany składnik\*
+    - [ ] Własne ikony związane z akcją\*
+    - [ ] Szuflada nawigacyjna\*
+    - [ ] Własna ikona dla aplikacji\*
+- [ ] Animacje
+    - [ ] Ma się opierać na systemie animacji właściwości (ObjectAnimator)
+    - [ ] Kod w kotlinie\*
+    - [ ] Uruchomienie kilku animatorów równocześnie\*
+    - [ ] Animacja reagująca na działania wybranego sensora\*
+    - [ ] Ruchy obiektów zgodne z regułami biblioteki Material Design\*
+    - [ ] Ruchy obiektów zgodne z prawami fizyki\*
