@@ -1,5 +1,6 @@
 package xyz.stasiak.kochbuch.data
 
+import androidx.annotation.DrawableRes
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -9,4 +10,5 @@ data class Recipe(
     val id: Int,
     val name: String,
     val type: RecipeType,
+    @DrawableRes val image: Int,
 )

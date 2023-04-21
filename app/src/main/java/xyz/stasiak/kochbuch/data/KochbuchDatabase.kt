@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = [Recipe::class], version = 1, exportSchema = false)
+@Database(entities = [Recipe::class], version = 3, exportSchema = false)
 abstract class KochbuchDatabase : RoomDatabase() {
 
     abstract fun recipeDao(): RecipeDao
@@ -24,7 +24,7 @@ abstract class KochbuchDatabase : RoomDatabase() {
                             super.onCreate(db)
                             for (recipe in RecipesSource.recipes) {
                                 db.execSQL(
-                                    "INSERT INTO recipes (id, name, type) VALUES (${recipe.id}, '${recipe.name}', '${recipe.type}')"
+                                    "INSERT INTO recipes (id, name, type, image) VALUES (${recipe.id}, '${recipe.name}', '${recipe.type}', ${recipe.image})"
                                 )
                             }
                         }
