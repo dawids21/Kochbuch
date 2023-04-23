@@ -13,7 +13,14 @@ import xyz.stasiak.kochbuch.R
 import xyz.stasiak.kochbuch.data.RecipeStep
 
 @Composable
-fun RecipeStepItem(step: RecipeStep, modifier: Modifier = Modifier) {
+fun RecipeStepItem(
+    step: RecipeStep, timerState: TimerUiState,
+    onTimerStart: () -> Unit,
+    onTimerPause: () -> Unit,
+    onTimerStop: () -> Unit,
+    onTimerValueChange: (Int) -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -31,6 +38,13 @@ fun RecipeStepItem(step: RecipeStep, modifier: Modifier = Modifier) {
         RecipeStepTime(
             time = step.time,
             modifier = Modifier.padding(top = 4.dp)
+        )
+        RecipeTimer(
+            timerState = timerState,
+            onTimerStart = onTimerStart,
+            onTimerPause = onTimerPause,
+            onTimerStop = onTimerStop,
+            onTimerValueChange = onTimerValueChange,
         )
     }
 }

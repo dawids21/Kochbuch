@@ -28,6 +28,11 @@ fun RecipeDetailsBody(
     recipe: Recipe,
     ingredients: List<RecipeIngredient>,
     steps: List<RecipeStep>,
+    timerStates: Map<RecipeStep, TimerUiState>,
+    onTimerStart: (RecipeStep) -> Unit,
+    onTimerPause: (RecipeStep) -> Unit,
+    onTimerStop: (RecipeStep) -> Unit,
+    onTimerValueChange: (RecipeStep, Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -69,7 +74,14 @@ fun RecipeDetailsBody(
             style = MaterialTheme.typography.h6
         )
         steps.forEach { step ->
-            RecipeStepItem(step)
+            RecipeStepItem(
+                step = step,
+                timerState = timerStates[step]!!,
+                onTimerStart = { onTimerStart(step) },
+                onTimerPause = { onTimerPause(step) },
+                onTimerStop = { onTimerStop(step) },
+                onTimerValueChange = { onTimerValueChange(step, it) }
+            )
         }
     }
 }

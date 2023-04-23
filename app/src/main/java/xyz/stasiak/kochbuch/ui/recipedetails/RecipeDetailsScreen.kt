@@ -23,6 +23,7 @@ fun RecipeDetailsScreen(
     viewModel: RecipeDetailsViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
     val recipeDetailsUiState by viewModel.recipe.collectAsState()
+    val timerStates = viewModel.timerStates
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
@@ -43,6 +44,11 @@ fun RecipeDetailsScreen(
             recipe = recipeDetailsUiState.recipe,
             ingredients = recipeDetailsUiState.ingredients,
             steps = recipeDetailsUiState.steps,
+            timerStates = timerStates,
+            onTimerStart = viewModel::startTimer,
+            onTimerPause = viewModel::pauseTimer,
+            onTimerStop = viewModel::stopTimer,
+            onTimerValueChange = viewModel::setTimerValue,
             modifier = Modifier.padding(innerPadding)
         )
     }

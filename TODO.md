@@ -10,20 +10,20 @@
         - [ ] Info o kaloryczności
 - [ ] Aplikacja typu lista-szczegoły - wersja na tablety
 - [ ] Dodanie fragmentu dynamicznego
-    - [ ] Dodać fragment minutnika
-    - [ ] Minutnik ma wyświetlać czas z dokładnością do sekundy
-    - [ ] Działa poprawnie po zmianie orientacji
+    - [x] Dodać fragment minutnika
+    - [x] Minutnik ma wyświetlać czas z dokładnością do sekundy
+    - [x] Działa poprawnie po zmianie orientacji
     - [ ] Działa poprawnie na telefonie i tablecie
     - [ ] Ma przyciski:
-        - [ ] Start - uruchom odliczanie
+        - [x] Start - uruchom odliczanie
         - [ ] Stop - Wyłącz odliczanie po dojściu do zera
         - [ ] Przerwij - Wyłącz odliczanie w dowolnym momencie
     - [ ] Sygnał dźwiękowy po dojściu do zera
-    - [ ] Możliwość dostosowania wartości minutnika
-    - [ ] Kod w kotlinie\*
-    - [ ] Możliwość uruchomienia kilku minutników jednocześnie\*
+    - [x] Możliwość dostosowania wartości minutnika
+    - [x] Kod w kotlinie\*
+    - [x] Możliwość uruchomienia kilku minutników jednocześnie\*
     - [ ] Narastający dźwięk\*
-    - [ ] Użycie ikon na przyciskach\*
+    - [x] Użycie ikon na przyciskach\*
 - [ ] Użycie biblioteki
     - [x] Ekran list składa się z trzech kart: info, zupy, dania główne
     - [x] Karta kategorii zawiera potrawy w formacie siatki
