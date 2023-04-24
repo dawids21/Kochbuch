@@ -8,6 +8,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import xyz.stasiak.kochbuch.KochbuchApplication
 import xyz.stasiak.kochbuch.ui.main.MainViewModel
 import xyz.stasiak.kochbuch.ui.recipedetails.RecipeDetailsViewModel
+import xyz.stasiak.kochbuch.ui.tablet.TabletMainViewModel
 
 object AppViewModelProvider {
     val Factory = viewModelFactory {
@@ -19,6 +20,9 @@ object AppViewModelProvider {
                 savedStateHandle = this.createSavedStateHandle(),
                 recipesRepository = kochbuchApplication().container.recipeRepository
             )
+        }
+        initializer {
+            TabletMainViewModel(kochbuchApplication().container.recipeRepository)
         }
     }
 }

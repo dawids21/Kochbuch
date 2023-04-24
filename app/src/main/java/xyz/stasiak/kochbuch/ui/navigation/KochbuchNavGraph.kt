@@ -28,7 +28,7 @@ fun KochbuchNavHost(
     ) {
         composable(route = MainDestination.route) {
             if (layoutType == LayoutType.TABLET) {
-                TabletMainScreen()
+                TabletMainScreen(navController = rememberNavController())
             } else {
                 MainScreen(navController = rememberNavController(), navigateToRecipe = {
                     navController.navigate(

@@ -1,7 +1,7 @@
 - [ ] Aplikacja typu lista-szczegoły
     - [x] Dwa ekrany z listą i szczegółami
     - [x] Korzysta z fragmentów
-    - [ ] Wersja dla telefonów i tabletów
+    - [x] Wersja dla telefonów i tabletów
     - [x] Działa poprawnie po zmianie orientacji
     - [x] Źródło danych inne niż tablica\*
     - [x] Kod aplikacji w kotlinie \*
