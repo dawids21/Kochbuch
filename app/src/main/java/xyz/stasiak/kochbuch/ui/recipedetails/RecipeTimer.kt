@@ -19,14 +19,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import xyz.stasiak.kochbuch.data.RecipeStep
 
 @Composable
 fun RecipeTimer(
+    step: RecipeStep,
     timerState: TimerUiState,
-    onTimerStart: () -> Unit,
-    onTimerPause: () -> Unit,
-    onTimerStop: () -> Unit,
-    onTimerValueChange: (Int) -> Unit,
+    onTimerEvent: (TimerEvent) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(verticalAlignment = Alignment.CenterVertically, modifier = modifier) {
@@ -41,9 +40,9 @@ fun RecipeTimer(
                 value = if (timerState.time != 0) timerState.time.toString() else "",
                 onValueChange = { newValue ->
                     try {
-                        onTimerValueChange(newValue.toInt())
+                        onTimerEvent(TimerEvent.TimeChanged(step, newValue.toInt()))
                     } catch (e: NumberFormatException) {
-                        onTimerValueChange(0)
+                        onTimerEvent(TimerEvent.TimeChanged(step, 0))
                     }
                 },
                 keyboardOptions = KeyboardOptions(
@@ -53,13 +52,13 @@ fun RecipeTimer(
                 modifier = Modifier.width(100.dp)
             )
         }
-        IconButton(onClick = { onTimerStart() }) {
+        IconButton(onClick = { onTimerEvent(TimerEvent.StartClicked(step)) }) {
             Icon(Icons.Filled.PlayArrow, contentDescription = "Start Timer")
         }
-        IconButton(onClick = { onTimerPause() }) {
+        IconButton(onClick = { onTimerEvent(TimerEvent.PauseClicked(step)) }) {
             Icon(Icons.Filled.Pause, contentDescription = "Pause Timer")
         }
-        IconButton(onClick = { onTimerStop() }) {
+        IconButton(onClick = { onTimerEvent(TimerEvent.StopClicked(step)) }) {
             Icon(Icons.Filled.Stop, contentDescription = "Stop Timer")
         }
     }

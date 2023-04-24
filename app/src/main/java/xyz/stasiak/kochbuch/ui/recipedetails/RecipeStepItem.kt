@@ -14,11 +14,9 @@ import xyz.stasiak.kochbuch.data.RecipeStep
 
 @Composable
 fun RecipeStepItem(
-    step: RecipeStep, timerState: TimerUiState,
-    onTimerStart: () -> Unit,
-    onTimerPause: () -> Unit,
-    onTimerStop: () -> Unit,
-    onTimerValueChange: (Int) -> Unit,
+    step: RecipeStep,
+    timerState: TimerUiState,
+    onTimerEvent: (TimerEvent) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -40,11 +38,9 @@ fun RecipeStepItem(
             modifier = Modifier.padding(top = 4.dp)
         )
         RecipeTimer(
+            step = step,
             timerState = timerState,
-            onTimerStart = onTimerStart,
-            onTimerPause = onTimerPause,
-            onTimerStop = onTimerStop,
-            onTimerValueChange = onTimerValueChange,
+            onTimerEvent = onTimerEvent,
         )
     }
 }

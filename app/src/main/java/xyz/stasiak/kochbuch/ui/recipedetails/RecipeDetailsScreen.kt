@@ -45,10 +45,7 @@ fun RecipeDetailsScreen(
             ingredients = recipeDetailsUiState.ingredients,
             steps = recipeDetailsUiState.steps,
             timerStates = timerStates,
-            onTimerStart = viewModel::startTimer,
-            onTimerPause = viewModel::pauseTimer,
-            onTimerStop = viewModel::stopTimer,
-            onTimerValueChange = viewModel::setTimerValue,
+            onTimerEvent = viewModel::onTimerEvent,
             modifier = Modifier.padding(innerPadding)
         )
     }

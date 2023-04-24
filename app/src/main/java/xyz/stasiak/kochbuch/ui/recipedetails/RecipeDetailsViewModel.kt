@@ -39,7 +39,16 @@ class RecipeDetailsViewModel(
         }
     }
 
-    fun startTimer(step: RecipeStep) {
+    fun onTimerEvent(event: TimerEvent) {
+        when (event) {
+            is TimerEvent.StartClicked -> startTimer(event.step)
+            is TimerEvent.PauseClicked -> pauseTimer(event.step)
+            is TimerEvent.StopClicked -> stopTimer(event.step)
+            is TimerEvent.TimeChanged -> setTimerValue(event.step, event.time)
+        }
+    }
+
+    private fun startTimer(step: RecipeStep) {
         val timerState = timerStates[step]!!
         if (timerState.isRunning) {
             return
@@ -54,7 +63,7 @@ class RecipeDetailsViewModel(
         timerStates[step] = timerState.copy(job = job, isRunning = true)
     }
 
-    fun pauseTimer(step: RecipeStep) {
+    private fun pauseTimer(step: RecipeStep) {
         val timerState = timerStates[step]!!
         if (!timerState.isRunning) {
             return
@@ -63,7 +72,7 @@ class RecipeDetailsViewModel(
         timerStates[step] = timerState.copy(isRunning = false)
     }
 
-    fun stopTimer(step: RecipeStep) {
+    private fun stopTimer(step: RecipeStep) {
         val timerState = timerStates[step]!!
         if (!timerState.isRunning) {
             return
@@ -72,7 +81,7 @@ class RecipeDetailsViewModel(
         timerStates[step] = timerState.copy(time = step.time, isRunning = false)
     }
 
-    fun setTimerValue(step: RecipeStep, value: Int) {
+    private fun setTimerValue(step: RecipeStep, value: Int) {
         timerStates[step] = timerStates[step]!!.copy(time = value)
     }
 }
