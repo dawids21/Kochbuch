@@ -18,7 +18,9 @@ class RecipeDetailsViewModel(
     recipesRepository: RecipesRepository
 ) : ViewModel() {
     val recipe: StateFlow<RecipeDetailsUiState> =
-        recipesRepository.getRecipe(checkNotNull(savedStateHandle[RecipeDetailsDestination.recipeId]))
+        recipesRepository.getRecipe(
+            savedStateHandle[RecipeDetailsDestination.recipeId] ?: 1
+        ) // TODO for testing tablet
             .map { RecipeDetailsUiState(it) }
             .stateIn(
                 scope = viewModelScope,
