@@ -24,7 +24,7 @@ fun TabletListPane(
     modifier: Modifier = Modifier
 ) {
     Scaffold(
-        bottomBar = { MainBottomBar(navController = navController) },
+        bottomBar = { MainBottomBar(navController = navController) }, // TODO W wersji na tablety powinien być raczej nav rail
         modifier = modifier
     ) { innerPadding ->
         NavHost(

@@ -13,7 +13,7 @@
     - [x] Dodać fragment minutnika
     - [x] Minutnik ma wyświetlać czas z dokładnością do sekundy
     - [x] Działa poprawnie po zmianie orientacji
-    - [ ] Działa poprawnie na telefonie i tablecie
+    - [x] Działa poprawnie na telefonie i tablecie
     - [ ] Ma przyciski:
         - [x] Start - uruchom odliczanie
         - [ ] Stop - Wyłącz odliczanie po dojściu do zera

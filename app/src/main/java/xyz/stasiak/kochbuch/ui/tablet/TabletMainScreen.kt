@@ -20,6 +20,9 @@ fun TabletMainScreen(
     val recipeDetailsUiState by viewModel.recipe.collectAsState()
     val timerStates = viewModel.timerStates
     Row(modifier = modifier) {
+        // TODO dodać navigation rail
+        // TODO powinniśmy mieć tylko 1 scaffold tutaj, a nie w komponentach niżej
+        // TODO app bar
         TabletListPane(
             navController = navController,
             mainCourses = mainCourses,

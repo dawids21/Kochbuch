@@ -96,6 +96,7 @@ class TabletMainViewModel(recipesRepository: RecipesRepository) : ViewModel() {
         timerStates[step] = timerState.copy(job = job, isRunning = true)
     }
 
+    // TODO poprawić działanie, powinno przerywać w dowolnym momencie i restartować
     private fun pauseTimer(step: RecipeStep) {
         val timerState = timerStates[step]!!
         if (!timerState.isRunning) {
@@ -105,6 +106,7 @@ class TabletMainViewModel(recipesRepository: RecipesRepository) : ViewModel() {
         timerStates[step] = timerState.copy(isRunning = false)
     }
 
+    // TODO powinno być możliwe do kliknięcia dopiero po dojściu do zera i powinno przerywać dżwięk
     private fun stopTimer(step: RecipeStep) {
         val timerState = timerStates[step]!!
         if (!timerState.isRunning) {

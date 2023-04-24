@@ -94,4 +94,6 @@ class RecipeDetailsViewModel(
 
 fun playSound() {
     // TODO: implement sound playing logic here
+    // TODO przenieść do osobnego pliku
+    // TODO narastający dżwięk
 }

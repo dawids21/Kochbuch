@@ -26,6 +26,7 @@ fun MainScreen(
 ) {
     val mainCourses by viewModel.mainCourses.collectAsState()
     val soups by viewModel.soups.collectAsState()
+    // TODO dodać gest przeciągnięcia do przechodzenia między kartami
     Scaffold(
         bottomBar = { MainBottomBar(navController = navController) },
         modifier = modifier

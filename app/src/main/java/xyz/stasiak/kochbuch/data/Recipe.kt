@@ -11,4 +11,5 @@ data class Recipe(
     val name: String,
     val type: RecipeType,
     @DrawableRes val image: Int,
+    // TODO dodać info o kaloryczności (po zmianie modelu trzeba odinstalować i zainstalować aplikacje)
 )

@@ -36,6 +36,8 @@ fun RecipeTimer(
                 modifier = Modifier.padding(end = 8.dp)
             )
         } else {
+            //TODO poprawić wielkość, szerokość, wyświetlić dwa pola na minuty i sekundy
+            // i dodać logikę przeliczania na sekundy
             TextField(
                 value = if (timerState.time != 0) timerState.time.toString() else "",
                 onValueChange = { newValue ->
@@ -52,6 +54,10 @@ fun RecipeTimer(
                 modifier = Modifier.width(100.dp)
             )
         }
+        //TODO wystarczy 1 przycisk naraz:
+        // nie działa to play
+        // działa ale jeszcze liczy to pause
+        // skończył liczyć to stop
         IconButton(onClick = { onTimerEvent(TimerEvent.StartClicked(step)) }) {
             Icon(Icons.Filled.PlayArrow, contentDescription = "Start Timer")
         }
