@@ -74,7 +74,8 @@ fun RecipeDetailsBody(
         Row(){
             IconButton(
                 onClick = {
-                    numberOfPortions--
+                    if (numberOfPortions > 1)
+                        numberOfPortions--
                 }
             ) {
                 Icon(Icons.Default.Remove, null)
