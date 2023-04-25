@@ -11,14 +11,15 @@ import androidx.compose.ui.unit.dp
 import xyz.stasiak.kochbuch.data.RecipeIngredient
 
 @Composable
-fun RecipeIngredientItem(ingredient: RecipeIngredient, modifier: Modifier = Modifier) {
+fun RecipeIngredientItem(ingredient: RecipeIngredient, modifier: Modifier = Modifier, numberOfPortions: Int) {
     Row(
         modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
+        val amount = ingredient.amount * numberOfPortions
         Text(
-            text = "${ingredient.name} - ${ingredient.amount} ${ingredient.unit}",
+            text = "${ingredient.name} - $amount ${ingredient.unit}",
             style = MaterialTheme.typography.body1,
             modifier = Modifier.weight(1f)
         )
