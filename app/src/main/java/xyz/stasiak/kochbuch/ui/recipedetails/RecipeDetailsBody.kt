@@ -82,6 +82,7 @@ fun RecipeDetailsBody(
             }
             IconButton(
                 onClick = {
+                    if (numberOfPortions < 10)
                     numberOfPortions++
                 }
             ) {
