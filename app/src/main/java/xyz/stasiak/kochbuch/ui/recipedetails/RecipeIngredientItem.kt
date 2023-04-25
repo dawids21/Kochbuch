@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.dp
 import xyz.stasiak.kochbuch.data.RecipeIngredient
 
 @Composable
-fun RecipeIngredientItem(ingredient: RecipeIngredient, modifier: Modifier = Modifier, numberOfPortions: Int) {
+fun RecipeIngredientItem(ingredient: RecipeIngredient, numberOfPortions: Int, modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .fillMaxWidth()
