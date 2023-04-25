@@ -6,7 +6,7 @@
     - [x] Źródło danych inne niż tablica\*
     - [x] Kod aplikacji w kotlinie \*
     - [ ] Dodanie do szczegółów\*:
-        - [ ] Przelicznika ilości składników według porcji
+        - [x] Przelicznika ilości składników według porcji
         - [ ] Info o kaloryczności
 - [ ] Aplikacja typu lista-szczegoły - wersja na tablety
 - [ ] Dodanie fragmentu dynamicznego
