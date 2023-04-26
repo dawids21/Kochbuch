@@ -61,13 +61,13 @@ object RecipesSource {
                     recipeId = 1,
                     order = 1,
                     description = "Schab pokroić na kawałki, wymieszać z mąką, jajkiem, solą i pieprzem.",
-                    time = 5
+                    time = 0
                 ),
                 RecipeStep(
                     recipeId = 1,
                     order = 2,
                     description = "Kawałki schabu panierować w mące, jajku i mące.",
-                    time = 5
+                    time = 0
                 ),
                 RecipeStep(
                     recipeId = 1,
@@ -134,13 +134,13 @@ object RecipesSource {
                     recipeId = 2,
                     order = 1,
                     description = "Mięso mielone pokroić na kawałki, wymieszać z mąką, jajkiem, solą i pieprzem.",
-                    time = 5
+                    time = 0
                 ),
                 RecipeStep(
                     recipeId = 2,
                     order = 2,
                     description = "Kawałki mięsa mielonego panierować w mące, jajku i mące.",
-                    time = 5
+                    time = 0
                 ),
                 RecipeStep(
                     recipeId = 2,
@@ -207,13 +207,13 @@ object RecipesSource {
                     recipeId = 3,
                     order = 1,
                     description = "Drobiowe mięso mielone pokroić na kawałki, wymieszać z mąką, jajkiem, solą i pieprzem.",
-                    time = 5
+                    time = 0
                 ),
                 RecipeStep(
                     recipeId = 3,
                     order = 2,
                     description = "Kawałki drobiowego mięsa mielonego panierować w mące, jajku i mące.",
-                    time = 5
+                    time = 0
                 ),
                 RecipeStep(
                     recipeId = 3,
@@ -280,13 +280,13 @@ object RecipesSource {
                     recipeId = 4,
                     order = 1,
                     description = "Wołowe mięso mielone pokroić na kawałki, wymieszać z mąką, jajkiem, solą i pieprzem.",
-                    time = 5
+                    time = 0
                 ),
                 RecipeStep(
                     recipeId = 4,
                     order = 2,
                     description = "Kawałki wołowego mięsa mielonego panierować w mące, jajku i mące.",
-                    time = 5
+                    time = 0
                 ),
                 RecipeStep(
                     recipeId = 4,
@@ -353,13 +353,13 @@ object RecipesSource {
                     recipeId = 5,
                     order = 1,
                     description = "Indykowe mięso mielone pokroić na kawałki, wymieszać z mąką, jajkiem, solą i pieprzem.",
-                    time = 5
+                    time = 0
                 ),
                 RecipeStep(
                     recipeId = 5,
                     order = 2,
                     description = "Kawałki indykowego mięsa mielonego panierować w mące, jajku i mące.",
-                    time = 5
+                    time = 0
                 ),
                 RecipeStep(
                     recipeId = 5,
@@ -419,7 +419,7 @@ object RecipesSource {
                     recipeId = 6,
                     order = 1,
                     description = "Cebulę pokroić w kostkę, podsmażyć na patelni z olejem.",
-                    time = 5
+                    time = 0
                 ),
                 RecipeStep(
                     recipeId = 6,
@@ -431,13 +431,13 @@ object RecipesSource {
                     recipeId = 6,
                     order = 3,
                     description = "Mąkę wymieszać z bulionem, dodać do zupy, wymieszać.",
-                    time = 5
+                    time = 0
                 ),
                 RecipeStep(
                     recipeId = 6,
                     order = 4,
                     description = "Zupę zagotować.",
-                    time = 5
+                    time = 15
                 )
             )
         ),
@@ -491,7 +491,7 @@ object RecipesSource {
                     recipeId = 7,
                     order = 1,
                     description = "Cebulę pokroić w kostkę, podsmażyć na patelni z olejem.",
-                    time = 5
+                    time = 0
                 ),
                 RecipeStep(
                     recipeId = 7,
@@ -503,13 +503,13 @@ object RecipesSource {
                     recipeId = 7,
                     order = 3,
                     description = "Mąkę wymieszać z bulionem, dodać do zupy, wymieszać.",
-                    time = 5
+                    time = 0
                 ),
                 RecipeStep(
                     recipeId = 7,
                     order = 4,
                     description = "Zupę zagotować.",
-                    time = 5
+                    time = 15
                 )
             )
         ),
@@ -562,13 +562,13 @@ object RecipesSource {
                     recipeId = 8,
                     order = 2,
                     description = "Mąkę wymieszać z bulionem, dodać do zupy, wymieszać.",
-                    time = 5
+                    time = 0
                 ),
                 RecipeStep(
                     recipeId = 8,
                     order = 3,
                     description = "Zupę zagotować.",
-                    time = 5
+                    time = 15
                 )
             )
         ),
@@ -634,13 +634,13 @@ object RecipesSource {
                     recipeId = 9,
                     order = 3,
                     description = "Mąkę wymieszać z bulionem, dodać do zupy, wymieszać.",
-                    time = 5
+                    time = 0
                 ),
                 RecipeStep(
                     recipeId = 9,
                     order = 4,
                     description = "Zupę zagotować.",
-                    time = 5
+                    time = 15
                 )
             )
         ),
@@ -706,13 +706,13 @@ object RecipesSource {
                     recipeId = 10,
                     order = 3,
                     description = "Mąkę wymieszać z bulionem, dodać do zupy, wymieszać.",
-                    time = 5
+                    time = 0
                 ),
                 RecipeStep(
                     recipeId = 10,
                     order = 4,
                     description = "Zupę zagotować.",
-                    time = 5
+                    time = 15
                 )
             )
         )
