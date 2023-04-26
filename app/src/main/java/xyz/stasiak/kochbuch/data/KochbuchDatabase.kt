@@ -28,7 +28,7 @@ abstract class KochbuchDatabase : RoomDatabase() {
                             super.onCreate(db)
                             for (recipeWithSteps in RecipesSource.recipes) {
                                 db.execSQL(
-                                    "INSERT INTO recipes (id, name, type, image) VALUES (${recipeWithSteps.recipe.id}, '${recipeWithSteps.recipe.name}', '${recipeWithSteps.recipe.type}', ${recipeWithSteps.recipe.image})"
+                                    "INSERT INTO recipes (id, name, type, calories, image) VALUES (${recipeWithSteps.recipe.id}, '${recipeWithSteps.recipe.name}', '${recipeWithSteps.recipe.type}','${recipeWithSteps.recipe.calories}', ${recipeWithSteps.recipe.image})"
                                 )
                                 for (step in recipeWithSteps.steps) {
                                     db.execSQL(

@@ -9,6 +9,7 @@ object RecipesSource {
                 id = 1,
                 name = "Kotlet schabowy",
                 type = RecipeType.MAIN_COURSE,
+                calories = 1000,
                 image = R.drawable.main_course,
             ),
             ingredients = listOf(
@@ -81,6 +82,7 @@ object RecipesSource {
                 id = 2,
                 name = "Kotlet mielony",
                 type = RecipeType.MAIN_COURSE,
+                calories = 700,
                 image = R.drawable.main_course,
             ),
             ingredients = listOf(
@@ -153,6 +155,7 @@ object RecipesSource {
                 id = 3,
                 name = "Kotlet drobiowy",
                 type = RecipeType.MAIN_COURSE,
+                calories = 500,
                 image = R.drawable.main_course,
             ),
             ingredients = listOf(
@@ -225,6 +228,7 @@ object RecipesSource {
                 id = 4,
                 name = "Kotlet wołowy",
                 type = RecipeType.MAIN_COURSE,
+                calories = 800,
                 image = R.drawable.main_course,
             ),
             ingredients = listOf(
@@ -297,6 +301,7 @@ object RecipesSource {
                 id = 5,
                 name = "Kotlet z indyka",
                 type = RecipeType.MAIN_COURSE,
+                calories = 450,
                 image = R.drawable.main_course,
             ),
             ingredients = listOf(
@@ -369,6 +374,7 @@ object RecipesSource {
                 id = 6,
                 name = "Zupa pomidorowa",
                 type = RecipeType.SOUP,
+                calories = 300,
                 image = R.drawable.soup,
             ),
             ingredients = listOf(
@@ -440,6 +446,7 @@ object RecipesSource {
                 id = 7,
                 name = "Zupa ogórkowa",
                 type = RecipeType.SOUP,
+                calories = 300,
                 image = R.drawable.soup,
             ),
             ingredients = listOf(
@@ -511,6 +518,7 @@ object RecipesSource {
                 id = 8,
                 name = "Zupa cebulowa",
                 type = RecipeType.SOUP,
+                calories = 350,
                 image = R.drawable.soup,
             ),
             ingredients = listOf(
@@ -569,6 +577,7 @@ object RecipesSource {
                 id = 9,
                 name = "Zupa pieczarkowa",
                 type = RecipeType.SOUP,
+                calories = 400,
                 image = R.drawable.soup,
             ),
             ingredients = listOf(
@@ -640,6 +649,7 @@ object RecipesSource {
                 id = 10,
                 name = "Zupa grzybowa",
                 type = RecipeType.SOUP,
+                calories = 470,
                 image = R.drawable.soup,
             ),
             ingredients = listOf(
