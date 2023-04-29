@@ -39,7 +39,7 @@ class RecipeDetailsViewModel(
             recipe.collect { recipeDetailsUiState ->
                 timerStates.clear()
                 recipeDetailsUiState.steps.forEach { step ->
-                    timerStates[step] = TimerUiState(time = step.time)
+                    timerStates[step] = TimerUiState(time = step.time * 60)
                 }
             }
         }
