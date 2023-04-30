@@ -62,7 +62,7 @@ class TabletMainViewModel(recipesRepository: RecipesRepository) : ViewModel() {
             recipe.collect { recipeDetailsUiState ->
                 timerStates.clear()
                 recipeDetailsUiState.steps.forEach { step ->
-                    timerStates[step] = TimerUiState(time = step.time)
+                    timerStates[step] = TimerUiState(minutes = step.time, seconds = 0)
                 }
             }
         }
@@ -77,7 +77,7 @@ class TabletMainViewModel(recipesRepository: RecipesRepository) : ViewModel() {
             is TimerEvent.StartClicked -> startTimer(event.step)
             is TimerEvent.PauseClicked -> pauseTimer(event.step)
             is TimerEvent.StopClicked -> stopTimer(event.step)
-            is TimerEvent.TimeChanged -> setTimerValue(event.step, event.time)
+            is TimerEvent.TimeChanged -> setTimerValue(event.step, event.minutes, event.seconds)
         }
     }
 
@@ -87,9 +87,13 @@ class TabletMainViewModel(recipesRepository: RecipesRepository) : ViewModel() {
             return
         }
         val job = viewModelScope.launch {
-            while (timerStates[step]!!.time > 0) {
+            while (timerStates[step]!!.seconds > 0 || timerStates[step]!!.minutes > 0) {
                 delay(1000)
-                timerStates[step] = timerStates[step]!!.copy(time = timerStates[step]!!.time - 1)
+                timerStates[step] = timerStates[step]!!.copy(seconds = timerStates[step]!!.seconds - 1)
+                if(timerStates[step]!!.seconds == 0) {
+                    timerStates[step] = timerStates[step]!!.copy(minutes = timerStates[step]!!.minutes - 1)
+                    timerStates[step] = timerStates[step]!!.copy(seconds = 60)
+                }
             }
             playSound()
         }
@@ -113,10 +117,10 @@ class TabletMainViewModel(recipesRepository: RecipesRepository) : ViewModel() {
             return
         }
         timerState.job?.cancel()
-        timerStates[step] = timerState.copy(time = step.time, isRunning = false)
+        timerStates[step] = timerState.copy(minutes = step.time * 60, isRunning = false)
     }
 
-    private fun setTimerValue(step: RecipeStep, value: Int) {
-        timerStates[step] = timerStates[step]!!.copy(time = value)
+    private fun setTimerValue(step: RecipeStep, minutes: Int, seconds: Int) {
+        timerStates[step] = timerStates[step]!!.copy(minutes = minutes, seconds = seconds)
     }
 }
