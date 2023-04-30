@@ -30,12 +30,10 @@ fun RecipeTimer(
     modifier: Modifier = Modifier
 ) {
     if (step.time != 0) {
-        val minutes = timerState.time / 60
-        val seconds = timerState.time % 60
         Column(verticalArrangement = Arrangement.Center, modifier = modifier) {
             if (timerState.isRunning) {
                 Text(
-                    text = formatTime(timerState.time),
+                    text = formatTime(timerState.minutes * 60 + timerState.seconds),
                     style = MaterialTheme.typography.body1,
                     modifier = Modifier.padding(end = 8.dp)
                 )
@@ -44,12 +42,18 @@ fun RecipeTimer(
                 // i dodać logikę przeliczania na sekundy
                 Row(horizontalArrangement = Arrangement.End, modifier = modifier) {
                     TextField(
-                        value = if (timerState.time != 0) timerState.time.toString() else "",
+                        value = if (timerState.minutes != 0) timerState.minutes.toString() else "",
                         onValueChange = { newValue ->
                             try {
-                                onTimerEvent(TimerEvent.TimeChanged(step, newValue.toInt()))
+                                onTimerEvent(
+                                    TimerEvent.TimeChanged(
+                                        step,
+                                        newValue.toInt(),
+                                        timerState.seconds
+                                    )
+                                )
                             } catch (e: NumberFormatException) {
-                                onTimerEvent(TimerEvent.TimeChanged(step, 0))
+                                onTimerEvent(TimerEvent.TimeChanged(step, 0, timerState.seconds))
                             }
                         },
                         keyboardOptions = KeyboardOptions(
@@ -59,12 +63,18 @@ fun RecipeTimer(
                         modifier = Modifier.width(100.dp)
                     )
                     TextField(
-                        value = if (timerState.time != 0) timerState.time.toString() else "",
+                        value = if (timerState.seconds != 0) timerState.seconds.toString() else "",
                         onValueChange = { newValue ->
                             try {
-                                onTimerEvent(TimerEvent.TimeChanged(step, newValue.toInt()))
+                                onTimerEvent(
+                                    TimerEvent.TimeChanged(
+                                        step,
+                                        timerState.minutes,
+                                        newValue.toInt()
+                                    )
+                                )
                             } catch (e: NumberFormatException) {
-                                onTimerEvent(TimerEvent.TimeChanged(step, 0))
+                                onTimerEvent(TimerEvent.TimeChanged(step, timerState.minutes, 0))
                             }
                         },
                         keyboardOptions = KeyboardOptions(
