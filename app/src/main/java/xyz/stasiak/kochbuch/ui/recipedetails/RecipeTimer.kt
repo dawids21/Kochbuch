@@ -54,7 +54,7 @@ fun RecipeTimer(
                 // i dodać logikę przeliczania na sekundy
                 Row(horizontalArrangement = Arrangement.Center, modifier = modifier) {
                     TextField(
-                        value = if (timerState.minutes != 0) timerState.minutes.toString() else "",
+                        value = formatTextFields(timerState.minutes),
                         onValueChange = { newValue ->
                             try {
                                 onTimerEvent(
@@ -78,7 +78,7 @@ fun RecipeTimer(
                         textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center, fontSize = 20.sp)
                     )
                     TextField(
-                        value = if (timerState.seconds != 0) timerState.seconds.toString() else "",
+                        value = formatTextFields(timerState.seconds),
                         onValueChange = { newValue ->
                             try {
                                 onTimerEvent(
@@ -108,16 +108,30 @@ fun RecipeTimer(
             // działa ale jeszcze liczy to pause
             // skończył liczyć to stop
             Row(modifier = modifier) {
-                IconButton(onClick = { onTimerEvent(TimerEvent.StartClicked(step)) }) {
-                    Icon(Icons.Filled.PlayArrow, contentDescription = "Start Timer")
+                if(!timerState.isRunning) {
+                    IconButton(onClick = { onTimerEvent(TimerEvent.StartClicked(step)) }) {
+                        Icon(Icons.Filled.PlayArrow, contentDescription = "Start Timer")
+                    }
+                } else if(timerState.isRunning && (timerState.minutes != 0 || timerState.seconds != 0)) {
+                    IconButton(onClick = { onTimerEvent(TimerEvent.PauseClicked(step)) }) {
+                        Icon(Icons.Filled.Pause, contentDescription = "Pause Timer")
+                    }
                 }
-                IconButton(onClick = { onTimerEvent(TimerEvent.PauseClicked(step)) }) {
-                    Icon(Icons.Filled.Pause, contentDescription = "Pause Timer")
-                }
-                IconButton(onClick = { onTimerEvent(TimerEvent.StopClicked(step)) }) {
-                    Icon(Icons.Filled.Stop, contentDescription = "Stop Timer")
+                else {
+                    IconButton(onClick = { onTimerEvent(TimerEvent.StopClicked(step)) }) {
+                        Icon(Icons.Filled.Stop, contentDescription = "Stop Timer")
+                    }
                 }
             }
         }
     }
+}
+
+fun formatTextFields(value: Int): String {
+    return if (value >=10)
+        value.toString()
+    else if ( value > 0)
+        "0$value"
+    else
+        "00"
 }
