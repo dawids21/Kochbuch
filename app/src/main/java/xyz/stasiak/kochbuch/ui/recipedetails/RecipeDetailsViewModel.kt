@@ -61,12 +61,14 @@ class RecipeDetailsViewModel(
         }
         val job = viewModelScope.launch {
             while (timerStates[step]!!.seconds > 0 || timerStates[step]!!.minutes > 0) {
-                if(timerStates[step]!!.seconds <= 0) {
-                    timerStates[step] = timerStates[step]!!.copy(minutes = timerStates[step]!!.minutes - 1)
+                if (timerStates[step]!!.seconds <= 0) {
+                    timerStates[step] =
+                        timerStates[step]!!.copy(minutes = timerStates[step]!!.minutes - 1)
                     timerStates[step] = timerStates[step]!!.copy(seconds = 60)
                 }
                 delay(1000)
-                timerStates[step] = timerStates[step]!!.copy(seconds = timerStates[step]!!.seconds - 1)
+                timerStates[step] =
+                    timerStates[step]!!.copy(seconds = timerStates[step]!!.seconds - 1)
             }
             playSound()
         }
