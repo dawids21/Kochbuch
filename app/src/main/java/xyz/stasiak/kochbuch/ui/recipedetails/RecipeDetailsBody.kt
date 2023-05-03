@@ -1,6 +1,7 @@
 package xyz.stasiak.kochbuch.ui.recipedetails
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,11 +17,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import xyz.stasiak.kochbuch.R
 import xyz.stasiak.kochbuch.data.Recipe
@@ -36,6 +39,23 @@ fun RecipeDetailsBody(
     onTimerEvent: (TimerEvent) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    if (recipe.id == 0) {
+        Column(
+            modifier = modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = stringResource(R.string.no_recipe_selected),
+                modifier = Modifier
+                    .padding(horizontal = 16.dp, vertical = 16.dp)
+                    .fillMaxWidth(),
+                style = MaterialTheme.typography.h5,
+                textAlign = TextAlign.Center
+            )
+        }
+        return
+    }
     Column(
         modifier = modifier
             .fillMaxSize()

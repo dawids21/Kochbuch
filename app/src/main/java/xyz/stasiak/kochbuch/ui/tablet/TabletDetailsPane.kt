@@ -52,7 +52,6 @@ fun TabletDetailsPane(
         },
         modifier = modifier
     ) { innerPadding ->
-        // TODO display something when no recipe is selected
         RecipeDetailsBody(
             recipe = recipeDetailsUiState.recipe,
             ingredients = recipeDetailsUiState.ingredients,
