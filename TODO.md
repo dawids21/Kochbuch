@@ -1,23 +1,23 @@
-- [ ] Aplikacja typu lista-szczegoły
+- [x] Aplikacja typu lista-szczegoły
     - [x] Dwa ekrany z listą i szczegółami
     - [x] Korzysta z fragmentów
     - [x] Wersja dla telefonów i tabletów
     - [x] Działa poprawnie po zmianie orientacji
     - [x] Źródło danych inne niż tablica\*
     - [x] Kod aplikacji w kotlinie \*
-    - [ ] Dodanie do szczegółów\*:
+    - [x] Dodanie do szczegółów\*:
         - [x] Przelicznika ilości składników według porcji
-        - [ ] Info o kaloryczności
+        - [x] Info o kaloryczności
 - [ ] Aplikacja typu lista-szczegoły - wersja na tablety
 - [ ] Dodanie fragmentu dynamicznego
     - [x] Dodać fragment minutnika
     - [x] Minutnik ma wyświetlać czas z dokładnością do sekundy
     - [x] Działa poprawnie po zmianie orientacji
     - [x] Działa poprawnie na telefonie i tablecie
-    - [ ] Ma przyciski:
+    - [x] Ma przyciski:
         - [x] Start - uruchom odliczanie
-        - [ ] Stop - Wyłącz odliczanie po dojściu do zera
-        - [ ] Przerwij - Wyłącz odliczanie w dowolnym momencie
+        - [x] Stop - Wyłącz odliczanie po dojściu do zera
+        - [x] Przerwij - Wyłącz odliczanie w dowolnym momencie
     - [ ] Sygnał dźwiękowy po dojściu do zera
     - [x] Możliwość dostosowania wartości minutnika
     - [x] Kod w kotlinie\*
@@ -29,15 +29,15 @@
     - [x] Karta kategorii zawiera potrawy w formacie siatki
     - [x] Kliknięcie w kartę prezentuje jej szczegóły
     - [x] Szczegóły potrawy zawierają nazwę, obrazek, listę składników i sposób przygotowania
-    - [ ] Szczegóły zawierają FAB, który przeysyła listę składników do innej aplikacji
+    - [x] Szczegóły zawierają FAB, który przeysyła listę składników do innej aplikacji
     - [x] Wykorzystać motywy
     - [x] Wykorzystać fragmenty
-    - [ ] Działa poprawnie po zmianie orientacji
-    - [ ] Każdy ekran ma mieć pasek aplikacji w postaci paska narzędzi
-    - [ ] Ekran szczegółów jest przewijany w pionie razem z paskiem aplikacji
+    - [x] Działa poprawnie po zmianie orientacji
+    - [x] Każdy ekran ma mieć pasek aplikacji w postaci paska narzędzi
+    - [x] Ekran szczegółów jest przewijany w pionie razem z paskiem aplikacji
     - [ ] Obrazek na ekranie szczegółów ma się pojawić na pasku aplikacji, ale ma się razem z nim
       zwijać
-    - [ ] Przechodzenie między kartami ma się odbywać za pomocą gestu przeciągnięcia
+    - [x] Przechodzenie między kartami ma się odbywać za pomocą gestu przeciągnięcia
     - [x] Kod w kotlinie\*
     - [ ] Dane umieszczone poza urządzeniem\*
     - [x] Wykorzystanie motywów z material design\*
@@ -47,7 +47,7 @@
     - [ ] Szuflada nawigacyjna\*
     - [ ] Własna ikona dla aplikacji\*
 - [ ] Animacje
-    - [ ] Ma się opierać na systemie animacji właściwości (ObjectAnimator)
+    - [x] Ma się opierać na systemie animacji właściwości (ObjectAnimator)
     - [ ] Kod w kotlinie\*
     - [ ] Uruchomienie kilku animatorów równocześnie\*
     - [ ] Animacja reagująca na działania wybranego sensora\*
