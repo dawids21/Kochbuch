@@ -67,6 +67,13 @@ fun RecipeDetailsBody(
             }
         )
         Text(
+            text = stringResource(R.string.calories, recipe.calories),
+            modifier = Modifier
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .fillMaxWidth(),
+            style = MaterialTheme.typography.h6
+        )
+        Text(
             text = stringResource(R.string.ingredients),
             modifier = Modifier
                 .padding(horizontal = 16.dp, vertical = 8.dp)

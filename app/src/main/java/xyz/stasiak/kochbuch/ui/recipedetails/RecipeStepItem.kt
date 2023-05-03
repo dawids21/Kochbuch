@@ -34,7 +34,7 @@ fun RecipeStepItem(
             modifier = Modifier.padding(top = 4.dp)
         )
         RecipeStepTime(
-            time = step.time,
+            time = step.time * 60,
             modifier = Modifier.padding(top = 4.dp)
         )
         RecipeTimer(
