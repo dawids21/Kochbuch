@@ -48,7 +48,7 @@ fun KochbuchNavHost(
             if (layoutType == LayoutType.TABLET) {
                 navController.popBackStack(MainDestination.route, false)
             } else {
-                RecipeDetailsScreen()
+                RecipeDetailsScreen(navigateUp = { navController.popBackStack() })
             }
         }
     }

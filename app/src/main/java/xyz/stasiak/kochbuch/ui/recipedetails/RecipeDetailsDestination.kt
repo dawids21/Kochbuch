@@ -5,7 +5,7 @@ import xyz.stasiak.kochbuch.ui.navigation.NavigationDestination
 
 object RecipeDetailsDestination : NavigationDestination {
     override val route = "recipe"
-    override val titleRes = R.string.empty
+    override val titleRes = R.string.recipe
     const val recipeId = "recipeId"
     val routeWithArgs = "$route/{$recipeId}"
 }

@@ -1,7 +1,11 @@
 package xyz.stasiak.kochbuch.ui.tablet
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -43,13 +47,19 @@ fun TabletDetailsPane(
         modifier = modifier
     ) { innerPadding ->
         // TODO display something when no recipe is selected
-        RecipeDetailsBody(
-            recipe = recipeDetailsUiState.recipe,
-            ingredients = recipeDetailsUiState.ingredients,
-            steps = recipeDetailsUiState.steps,
-            timerStates = timerStates,
-            onTimerEvent = onTimerEvent,
-            modifier = Modifier.padding(innerPadding)
-        )
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+        ) {
+            RecipeDetailsBody(
+                recipe = recipeDetailsUiState.recipe,
+                ingredients = recipeDetailsUiState.ingredients,
+                steps = recipeDetailsUiState.steps,
+                timerStates = timerStates,
+                onTimerEvent = onTimerEvent,
+                modifier = Modifier.padding(innerPadding)
+            )
+        }
     }
 }
