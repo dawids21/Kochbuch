@@ -1,5 +1,6 @@
 package xyz.stasiak.kochbuch.ui.tablet
 
+import android.content.Intent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -15,6 +16,7 @@ import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.snapshots.SnapshotStateMap
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import xyz.stasiak.kochbuch.R
 import xyz.stasiak.kochbuch.data.RecipeStep
@@ -30,10 +32,18 @@ fun TabletDetailsPane(
     onTimerEvent: (TimerEvent) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val ingredientsToShare = recipeDetailsUiState.ingredients.joinToString(separator = "\n") { it.name }
+    val sendIntent: Intent = Intent().apply {
+        action = Intent.ACTION_SEND
+        putExtra(Intent.EXTRA_TEXT, ingredientsToShare)
+        type = "text/plain"
+    }
+    val shareIntent = Intent.createChooser(sendIntent, null)
+    val context = LocalContext.current
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { /*TODO*/ },
+                onClick = { context.startActivity(shareIntent) },
                 modifier = Modifier.navigationBarsPadding(),
                 contentColor = MaterialTheme.colors.primary
             ) {
@@ -46,7 +56,6 @@ fun TabletDetailsPane(
         },
         modifier = modifier
     ) { innerPadding ->
-        // TODO display something when no recipe is selected
         Column(
             modifier = modifier
                 .fillMaxSize()

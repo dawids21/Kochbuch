@@ -1,5 +1,6 @@
 package xyz.stasiak.kochbuch.ui.recipedetails
 
+import android.content.Intent
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.FloatingActionButton
@@ -12,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import xyz.stasiak.kochbuch.R
@@ -25,10 +27,18 @@ fun RecipeDetailsScreen(
 ) {
     val recipeDetailsUiState by viewModel.recipe.collectAsState()
     val timerStates = viewModel.timerStates
+    val ingredientsToShare = recipeDetailsUiState.ingredients.joinToString(separator = "\n") { it.name }
+    val sendIntent: Intent = Intent().apply {
+        action = Intent.ACTION_SEND
+        putExtra(Intent.EXTRA_TEXT, ingredientsToShare)
+        type = "text/plain"
+    }
+    val shareIntent = Intent.createChooser(sendIntent, null)
+    val context = LocalContext.current
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { /*TODO*/ },
+                onClick = { context.startActivity(shareIntent) },
                 modifier = Modifier.navigationBarsPadding(),
                 contentColor = MaterialTheme.colors.primary
             ) {
