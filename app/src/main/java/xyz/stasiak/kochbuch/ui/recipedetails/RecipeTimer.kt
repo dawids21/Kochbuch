@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import xyz.stasiak.kochbuch.data.RecipeStep
@@ -59,7 +60,11 @@ fun RecipeTimer(
                     )
                 }
             } else {
-                Row(horizontalArrangement = Arrangement.Center, modifier = modifier) {
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = modifier
+                ) {
                     TextField(
                         value = minutesInput,
                         onValueChange = { newValue ->
@@ -85,6 +90,7 @@ fun RecipeTimer(
                         ),
                         visualTransformation = TimeVisualTransformation()
                     )
+                    Text(text = ":", fontSize = 20.sp, modifier = Modifier.padding(horizontal = 8.dp))
                     TextField(
                         value = secondsInput,
                         onValueChange = { newValue ->
@@ -137,4 +143,14 @@ fun RecipeTimer(
             }
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun RecipeTimerPreview() {
+    RecipeTimer(
+        step = RecipeStep(1, 1, "", 12),
+        timerState = TimerUiState(12, 34, false),
+        onTimerEvent = {}
+    )
 }
