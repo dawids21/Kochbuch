@@ -48,8 +48,8 @@
     - [ ] Własna ikona dla aplikacji\*
 - [ ] Animacje
     - [x] Ma się opierać na systemie animacji właściwości (ObjectAnimator)
-    - [ ] Kod w kotlinie\*
-    - [ ] Uruchomienie kilku animatorów równocześnie\*
+    - [x] Kod w kotlinie\*
+    - [x] Uruchomienie kilku animatorów równocześnie\*
     - [ ] Animacja reagująca na działania wybranego sensora\*
-    - [ ] Ruchy obiektów zgodne z regułami biblioteki Material Design\*
-    - [ ] Ruchy obiektów zgodne z prawami fizyki\*
+    - [x] Ruchy obiektów zgodne z regułami biblioteki Material Design\*
+    - [x] Ruchy obiektów zgodne z prawami fizyki\*
