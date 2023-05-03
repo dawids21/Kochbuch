@@ -55,7 +55,7 @@ fun RecipeTimer(
                         modifier = Modifier
                             .padding(top = 20.dp, bottom = 10.dp)
                             .height(30.dp)
-                            .width(160.dp),
+                            .width(180.dp),
                         textAlign = TextAlign.Center
                     )
                 }
@@ -90,7 +90,12 @@ fun RecipeTimer(
                         ),
                         visualTransformation = TimeVisualTransformation()
                     )
-                    Text(text = ":", fontSize = 20.sp, modifier = Modifier.padding(horizontal = 8.dp))
+                    Text(
+                        text = ":",
+                        fontSize = 20.sp,
+                        modifier = Modifier.width(20.dp),
+                        textAlign = TextAlign.Center
+                    )
                     TextField(
                         value = secondsInput,
                         onValueChange = { newValue ->
@@ -151,6 +156,16 @@ fun RecipeTimerPreview() {
     RecipeTimer(
         step = RecipeStep(1, 1, "", 12),
         timerState = TimerUiState(12, 34, false),
+        onTimerEvent = {}
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun RecipeTimerRunningPreview() {
+    RecipeTimer(
+        step = RecipeStep(1, 1, "", 12),
+        timerState = TimerUiState(12, 34, true),
         onTimerEvent = {}
     )
 }
