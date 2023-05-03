@@ -9,11 +9,13 @@ import xyz.stasiak.kochbuch.R
 
 @Composable
 fun RecipeStepTime(time: Int, modifier: Modifier = Modifier) {
-    Text(
-        text = stringResource(R.string.step_time, formatTime(time = time)),
-        style = MaterialTheme.typography.caption,
-        modifier = modifier
-    )
+    if(time != 0) {
+        Text(
+            text = stringResource(R.string.step_time, formatTime(time = time)),
+            style = MaterialTheme.typography.caption,
+            modifier = modifier
+        )
+    }
 }
 
 @Composable
