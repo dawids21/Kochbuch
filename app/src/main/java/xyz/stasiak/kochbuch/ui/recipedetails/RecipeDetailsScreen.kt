@@ -25,7 +25,6 @@ fun RecipeDetailsScreen(
 ) {
     val recipeDetailsUiState by viewModel.recipe.collectAsState()
     val timerStates = viewModel.timerStates
-    // TODO app bar
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(

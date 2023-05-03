@@ -14,6 +14,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -21,6 +22,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import xyz.stasiak.kochbuch.ui.AppViewModelProvider
+import xyz.stasiak.kochbuch.ui.KochbuchTopAppBar
 import xyz.stasiak.kochbuch.ui.main.info.BottomInfoDestination
 import xyz.stasiak.kochbuch.ui.main.info.InfoScreen
 import xyz.stasiak.kochbuch.ui.main.recipes.BottomMainCourseDestination
@@ -46,11 +48,12 @@ fun MainScreen(
     )
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+    val currentDestination = destinations.find { it.route == currentRoute }
     LaunchedEffect(swipeableState.currentValue) {
         if (swipeableState.currentValue == 0) {
             return@LaunchedEffect
         }
-        destinations.find { it.route == currentRoute }?.let { destination ->
+        currentDestination?.let { destination ->
             val index = destinations.indexOf(destination)
             val nextIndex = index + swipeableState.currentValue
             if (nextIndex in destinations.indices) {
@@ -68,6 +71,12 @@ fun MainScreen(
         }
     }
     Scaffold(
+        topBar = {
+            KochbuchTopAppBar(
+                title = currentDestination?.let { stringResource(id = it.titleRes) } ?: "",
+                canNavigateBack = false
+            )
+        },
         bottomBar = { MainBottomBar(navController = navController) },
         modifier = modifier.swipeable(
             state = swipeableState,
