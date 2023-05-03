@@ -7,9 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -59,7 +57,6 @@ fun RecipeDetailsBody(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
     ) {
         Image(
             painter = painterResource(id = recipe.image),
@@ -88,6 +85,13 @@ fun RecipeDetailsBody(
                 if (numberOfPortions < 10)
                     numberOfPortions++
             }
+        )
+        Text(
+            text = stringResource(R.string.calories, recipe.calories),
+            modifier = Modifier
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .fillMaxWidth(),
+            style = MaterialTheme.typography.h6
         )
         Text(
             text = stringResource(R.string.ingredients),

@@ -21,6 +21,7 @@ import xyz.stasiak.kochbuch.ui.AppViewModelProvider
 
 @Composable
 fun RecipeDetailsScreen(
+    navigateUp: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: RecipeDetailsViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
@@ -34,7 +35,6 @@ fun RecipeDetailsScreen(
     }
     val shareIntent = Intent.createChooser(sendIntent, null)
     val context = LocalContext.current
-    // TODO app bar
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
@@ -51,12 +51,13 @@ fun RecipeDetailsScreen(
         },
         modifier = modifier
     ) { innerPadding ->
-        RecipeDetailsBody(
+        RecipeDetailsBodyWithAppBar(
             recipe = recipeDetailsUiState.recipe,
             ingredients = recipeDetailsUiState.ingredients,
             steps = recipeDetailsUiState.steps,
             timerStates = timerStates,
             onTimerEvent = viewModel::onTimerEvent,
+            navigateUp = navigateUp,
             modifier = Modifier.padding(innerPadding)
         )
     }

@@ -20,7 +20,7 @@ class RecipeDetailsUiState(
 
     companion object {
         val EMPTY = RecipeDetailsUiState(
-            Recipe(0, "", RecipeType.MAIN_COURSE, R.drawable.main_course),
+            Recipe(0, "", RecipeType.MAIN_COURSE, 0, R.drawable.main_course),
             emptyList(),
             emptyList()
         )
