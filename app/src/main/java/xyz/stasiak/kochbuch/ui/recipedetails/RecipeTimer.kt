@@ -18,6 +18,10 @@ import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Stop
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
@@ -34,10 +38,15 @@ fun RecipeTimer(
     onTimerEvent: (TimerEvent) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    var minutesInput by rememberSaveable { mutableStateOf(timerState.minutes.toString()) }
+    var secondsInput by rememberSaveable { mutableStateOf(timerState.seconds.toString()) }
     if (step.time != 0) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally,  modifier = modifier) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = modifier.padding(8.dp)
+        ) {
             if (timerState.isRunning) {
-                Column(verticalArrangement = Arrangement.Center,  modifier = modifier) {
+                Column(verticalArrangement = Arrangement.Center, modifier = modifier) {
                     Text(
                         text = formatTime(timerState.minutes * 60 + timerState.seconds),
                         style = MaterialTheme.typography.body1,
@@ -50,23 +59,18 @@ fun RecipeTimer(
                     )
                 }
             } else {
-                //TODO poprawić wielkość, szerokość, wyświetlić dwa pola na minuty i sekundy
-                // i dodać logikę przeliczania na sekundy
                 Row(horizontalArrangement = Arrangement.Center, modifier = modifier) {
                     TextField(
-                        value = formatTextFields(timerState.minutes),
+                        value = minutesInput,
                         onValueChange = { newValue ->
-                            try {
-                                onTimerEvent(
-                                    TimerEvent.TimeChanged(
-                                        step,
-                                        newValue.toInt(),
-                                        timerState.seconds
-                                    )
+                            onTimerEvent(
+                                TimerEvent.TimeChanged(
+                                    step,
+                                    newValue.toIntOrNull() ?: 0,
+                                    timerState.seconds
                                 )
-                            } catch (e: NumberFormatException) {
-                                onTimerEvent(TimerEvent.TimeChanged(step, 0, timerState.seconds))
-                            }
+                            )
+                            minutesInput = newValue
                         },
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Number,
@@ -75,22 +79,23 @@ fun RecipeTimer(
                         modifier = Modifier
                             .width(80.dp)
                             .height(60.dp),
-                        textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center, fontSize = 20.sp)
+                        textStyle = LocalTextStyle.current.copy(
+                            textAlign = TextAlign.Center,
+                            fontSize = 20.sp
+                        ),
+                        visualTransformation = TimeVisualTransformation()
                     )
                     TextField(
-                        value = formatTextFields(timerState.seconds),
+                        value = secondsInput,
                         onValueChange = { newValue ->
-                            try {
-                                onTimerEvent(
-                                    TimerEvent.TimeChanged(
-                                        step,
-                                        timerState.minutes,
-                                        newValue.toInt()
-                                    )
+                            onTimerEvent(
+                                TimerEvent.TimeChanged(
+                                    step,
+                                    timerState.minutes,
+                                    newValue.toIntOrNull() ?: 0
                                 )
-                            } catch (e: NumberFormatException) {
-                                onTimerEvent(TimerEvent.TimeChanged(step, timerState.minutes, 0))
-                            }
+                            )
+                            secondsInput = newValue
                         },
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Number,
@@ -99,39 +104,37 @@ fun RecipeTimer(
                         modifier = Modifier
                             .width(80.dp)
                             .height(60.dp),
-                        textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center, fontSize = 20.sp)
+                        textStyle = LocalTextStyle.current.copy(
+                            textAlign = TextAlign.Center,
+                            fontSize = 20.sp
+                        ),
+                        visualTransformation = TimeVisualTransformation()
                     )
                 }
             }
-            //TODO wystarczy 1 przycisk naraz:
-            // nie działa to play
-            // działa ale jeszcze liczy to pause
-            // skończył liczyć to stop
             Row(modifier = modifier) {
-                if(!timerState.isRunning) {
+                if (!timerState.isRunning) {
                     IconButton(onClick = { onTimerEvent(TimerEvent.StartClicked(step)) }) {
                         Icon(Icons.Filled.PlayArrow, contentDescription = "Start Timer")
                     }
-                } else if(timerState.isRunning && (timerState.minutes != 0 || timerState.seconds != 0)) {
-                    IconButton(onClick = { onTimerEvent(TimerEvent.PauseClicked(step)) }) {
+                } else if (timerState.isRunning && (timerState.minutes != 0 || timerState.seconds != 0)) {
+                    IconButton(onClick = {
+                        onTimerEvent(TimerEvent.PauseClicked(step))
+                        minutesInput = timerState.minutes.toString()
+                        secondsInput = timerState.seconds.toString()
+                    }) {
                         Icon(Icons.Filled.Pause, contentDescription = "Pause Timer")
                     }
-                }
-                else {
-                    IconButton(onClick = { onTimerEvent(TimerEvent.StopClicked(step)) }) {
+                } else {
+                    IconButton(onClick = {
+                        onTimerEvent(TimerEvent.StopClicked(step))
+                        minutesInput = step.time.toString()
+                        secondsInput = ""
+                    }) {
                         Icon(Icons.Filled.Stop, contentDescription = "Stop Timer")
                     }
                 }
             }
         }
     }
-}
-
-fun formatTextFields(value: Int): String {
-    return if (value >=10)
-        value.toString()
-    else if ( value > 0)
-        "0$value"
-    else
-        "00"
 }
