@@ -24,6 +24,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import xyz.stasiak.kochbuch.LayoutType
 import xyz.stasiak.kochbuch.R
 import xyz.stasiak.kochbuch.ui.AppViewModelProvider
 import xyz.stasiak.kochbuch.ui.main.info.BottomInfoDestination
@@ -36,6 +37,7 @@ import xyz.stasiak.kochbuch.ui.recipedetails.RecipeDetailsBody
 @Composable
 fun TabletMainScreen(
     navController: NavHostController,
+    layoutType: LayoutType,
     modifier: Modifier = Modifier,
     viewModel: TabletMainViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
@@ -80,7 +82,7 @@ fun TabletMainScreen(
                 modifier = Modifier.weight(1f)
             ) {
                 composable(route = BottomInfoDestination.route) {
-                    InfoScreen()
+                    InfoScreen(layoutType = layoutType)
                 }
                 composable(route = BottomSoupDestination.route) {
                     RecipeScreen(recipes = soups, navigateToRecipe = viewModel::setRecipeId)
