@@ -26,7 +26,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import xyz.stasiak.kochbuch.R
 import xyz.stasiak.kochbuch.ui.AppViewModelProvider
-import xyz.stasiak.kochbuch.ui.main.MainBottomBar
 import xyz.stasiak.kochbuch.ui.main.info.BottomInfoDestination
 import xyz.stasiak.kochbuch.ui.main.info.InfoScreen
 import xyz.stasiak.kochbuch.ui.main.recipes.BottomMainCourseDestination
@@ -54,7 +53,6 @@ fun TabletMainScreen(
     val shareIntent = Intent.createChooser(sendIntent, null)
     val context = LocalContext.current
     Scaffold(
-        bottomBar = { MainBottomBar(navController = navController) }, // TODO W wersji na tablety powinien być raczej nav rail
         floatingActionButton = {
             if (recipeDetailsUiState.recipe.id != 0) {
                 FloatingActionButton(
@@ -75,8 +73,7 @@ fun TabletMainScreen(
         modifier = modifier
     ) { innerPadding ->
         Row(modifier = Modifier.padding(innerPadding)) {
-            // TODO dodać navigation rail
-            // TODO app bar
+            TabletNavRail(navController = navController)
             NavHost(
                 navController = navController,
                 startDestination = BottomInfoDestination.route,
