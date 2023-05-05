@@ -14,8 +14,8 @@ fun KochbuchApp(
     navController: NavHostController = rememberNavController()
 ) {
     //TODO change after testing
-//    if (widthSizeClass == WindowWidthSizeClass.Compact && heightSizeClass == WindowHeightSizeClass.Compact) {
-    if (heightSizeClass != WindowHeightSizeClass.Compact) {
+    if (widthSizeClass == WindowWidthSizeClass.Compact && heightSizeClass == WindowHeightSizeClass.Compact) {
+//    if (heightSizeClass != WindowHeightSizeClass.Compact) {
         KochbuchNavHost(layoutType = LayoutType.PHONE, navController = navController)
     } else {
         KochbuchNavHost(layoutType = LayoutType.TABLET, navController = navController)

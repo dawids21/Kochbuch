@@ -32,7 +32,8 @@ fun TabletDetailsPane(
     onTimerEvent: (TimerEvent) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val ingredientsToShare = recipeDetailsUiState.ingredients.joinToString(separator = "\n") { it.name }
+    val ingredientsToShare =
+        recipeDetailsUiState.ingredients.joinToString(separator = "\n") { it.name }
     val sendIntent: Intent = Intent().apply {
         action = Intent.ACTION_SEND
         putExtra(Intent.EXTRA_TEXT, ingredientsToShare)
@@ -42,16 +43,20 @@ fun TabletDetailsPane(
     val context = LocalContext.current
     Scaffold(
         floatingActionButton = {
-            FloatingActionButton(
-                onClick = { context.startActivity(shareIntent) },
-                modifier = Modifier.navigationBarsPadding(),
-                contentColor = MaterialTheme.colors.primary
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Share,
-                    contentDescription = stringResource(R.string.recipe_details_share),
-                    tint = MaterialTheme.colors.onPrimary
-                )
+            if (recipeDetailsUiState.recipe.id != 0) {
+                FloatingActionButton(
+                    onClick = {
+                        context.startActivity(shareIntent)
+                    },
+                    modifier = Modifier.navigationBarsPadding(),
+                    contentColor = MaterialTheme.colors.primary
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Share,
+                        contentDescription = stringResource(R.string.recipe_details_share),
+                        tint = MaterialTheme.colors.onPrimary
+                    )
+                }
             }
         },
         modifier = modifier
