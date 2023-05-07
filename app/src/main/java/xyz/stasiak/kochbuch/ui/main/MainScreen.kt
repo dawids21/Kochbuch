@@ -44,6 +44,7 @@ fun MainScreen(
 ) {
     val mainCourses by viewModel.mainCourses.collectAsState()
     val soups by viewModel.soups.collectAsState()
+    val allRecipeIds = mainCourses.map { it.id }.toSet() + soups.map { it.id }.toSet()
 
     val swipeableState = rememberSwipeableState(initialValue = 0)
     val sizePx = with(LocalDensity.current) { 200.dp.toPx() }
@@ -81,10 +82,10 @@ fun MainScreen(
                 title = currentDestination?.let { stringResource(id = it.titleRes) } ?: "",
                 canNavigateBack = false,
                 actions = {
-                    IconButton(onClick = { /*TODO*/ }) {
+                    IconButton(onClick = { navigateToRecipe(allRecipeIds.random()) }) {
                         Icon(
                             painterResource(id = R.drawable.random_recipe),
-                            contentDescription = null,
+                            contentDescription = stringResource(R.string.random_recipe),
                             modifier = Modifier.width(32.dp),
                         )
                     }

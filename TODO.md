@@ -41,7 +41,7 @@
     - [x] Kod w kotlinie\*
     - [ ] Dane umieszczone poza urządzeniem\*
     - [x] Wykorzystanie motywów z material design\*
-    - [ ] Dodanie do paska aplikacji akcji\*
+    - [x] Dodanie do paska aplikacji akcji\*
     - [ ] Dodanie do paska aplikacji opcji wyszukiwania przepisów, które zawierają dany składnik\*
     - [x] Własne ikony związane z akcją\*
     - [ ] Szuflada nawigacyjna\*
