@@ -5,13 +5,20 @@ import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FractionalThreshold
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.rememberSwipeableState
 import androidx.compose.material.swipeable
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
@@ -23,6 +30,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import xyz.stasiak.kochbuch.ui.AppViewModelProvider
 import xyz.stasiak.kochbuch.ui.KochbuchTopAppBar
+import xyz.stasiak.kochbuch.ui.SearchTopAppBar
 import xyz.stasiak.kochbuch.ui.main.info.BottomInfoDestination
 import xyz.stasiak.kochbuch.ui.main.info.InfoScreen
 import xyz.stasiak.kochbuch.ui.main.recipes.BottomMainCourseDestination
@@ -39,6 +47,9 @@ fun MainScreen(
 ) {
     val mainCourses by viewModel.mainCourses.collectAsState()
     val soups by viewModel.soups.collectAsState()
+
+    var isSearching by remember { mutableStateOf(false) }
+    var searchValue by remember { mutableStateOf("") }
 
     val swipeableState = rememberSwipeableState(initialValue = 0)
     val sizePx = with(LocalDensity.current) { 200.dp.toPx() }
@@ -72,12 +83,37 @@ fun MainScreen(
     }
     Scaffold(
         topBar = {
-            KochbuchTopAppBar(
-                title = currentDestination?.let { stringResource(id = it.titleRes) } ?: "",
-                canNavigateBack = false
-            )
+            if (isSearching) {
+                SearchTopAppBar(
+                    value = searchValue,
+                    onValueChange = { searchValue = it },
+                    onBackClicked = {
+                        isSearching = false
+                        searchValue = ""
+                    })
+            } else {
+                KochbuchTopAppBar(
+                    title = currentDestination?.let { stringResource(id = it.titleRes) } ?: "",
+                    canNavigateBack = false,
+                    actions = {
+                        if (currentDestination != BottomInfoDestination) {
+                            IconButton(onClick = { isSearching = true }) {
+                                Icon(
+                                    Icons.Filled.Search,
+                                    contentDescription = "Search for recipe with given ingredient"
+                                )
+                            }
+                        }
+                    }
+                )
+            }
         },
-        bottomBar = { MainBottomBar(navController = navController) },
+        bottomBar = {
+            MainBottomBar(navController = navController, beforeNavigation = {
+                isSearching = false
+                searchValue = ""
+            })
+        },
         modifier = modifier.swipeable(
             state = swipeableState,
             anchors = anchors,
