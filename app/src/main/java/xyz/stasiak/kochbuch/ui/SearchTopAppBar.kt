@@ -1,5 +1,6 @@
 package xyz.stasiak.kochbuch.ui
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
@@ -64,6 +65,7 @@ fun SearchTopAppBar(
     LaunchedEffect(Unit) {
         focusRequester.requestFocus()
     }
+    BackHandler(onBack = onBackClicked)
 }
 
 @Preview
