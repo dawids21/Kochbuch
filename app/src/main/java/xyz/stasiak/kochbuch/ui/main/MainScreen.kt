@@ -51,6 +51,21 @@ fun MainScreen(
     var isSearching by remember { mutableStateOf(false) }
     var searchValue by remember { mutableStateOf("") }
 
+    val filteredMainCourses = mainCourses.filter { recipeWithIngredients ->
+        recipeWithIngredients.ingredients.any {
+            it.name.lowercase().contains(
+                searchValue.lowercase()
+            )
+        }
+    }
+    val filteredSoups = soups.filter { recipeWithIngredients ->
+        recipeWithIngredients.ingredients.any {
+            it.name.lowercase().contains(
+                searchValue.lowercase()
+            )
+        }
+    }
+
     val swipeableState = rememberSwipeableState(initialValue = 0)
     val sizePx = with(LocalDensity.current) { 200.dp.toPx() }
     val anchors = mapOf(-sizePx to 1, 0f to 0, sizePx to -1)
@@ -130,10 +145,16 @@ fun MainScreen(
                 InfoScreen()
             }
             composable(route = BottomSoupDestination.route) {
-                RecipeScreen(recipes = soups, navigateToRecipe = navigateToRecipe)
+                RecipeScreen(
+                    recipes = filteredSoups.map { it.recipe },
+                    navigateToRecipe = navigateToRecipe
+                )
             }
             composable(route = BottomMainCourseDestination.route) {
-                RecipeScreen(recipes = mainCourses, navigateToRecipe = navigateToRecipe)
+                RecipeScreen(
+                    recipes = filteredMainCourses.map { it.recipe },
+                    navigateToRecipe = navigateToRecipe
+                )
             }
         }
     }
