@@ -21,6 +21,8 @@ class RecipeDetailsViewModel(
         private const val TIMEOUT_MILLIS = 5_000L
     }
 
+//    private val soundPlayer = SoundPlayer(LocalContext.current)
+
     val recipe: StateFlow<RecipeDetailsUiState> =
         recipesRepository.getRecipe(
             savedStateHandle[RecipeDetailsDestination.recipeId] ?: 1
@@ -71,7 +73,7 @@ class RecipeDetailsViewModel(
                     )
                 }
             }
-            playSound()
+//            soundPlayer.playSound()
         }
         timerStates[step] = timerState.copy(job = job, isRunning = true)
     }
@@ -99,8 +101,3 @@ class RecipeDetailsViewModel(
     }
 }
 
-fun playSound() {
-    // TODO: implement sound playing logic here
-    // TODO przenieść do osobnego pliku
-    // TODO narastający dżwięk
-}
