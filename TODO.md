@@ -42,7 +42,7 @@
     - [ ] Dane umieszczone poza urządzeniem\*
     - [x] Wykorzystanie motywów z material design\*
     - [ ] Dodanie do paska aplikacji akcji\*
-    - [ ] Dodanie do paska aplikacji opcji wyszukiwania przepisów, które zawierają dany składnik\*
+    - [x] Dodanie do paska aplikacji opcji wyszukiwania przepisów, które zawierają dany składnik\*
     - [ ] Własne ikony związane z akcją\*
     - [ ] Szuflada nawigacyjna\*
     - [ ] Własna ikona dla aplikacji\*
