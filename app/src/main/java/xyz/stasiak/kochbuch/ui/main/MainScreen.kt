@@ -50,7 +50,7 @@ fun MainScreen(
 ) {
     val mainCourses by viewModel.mainCourses.collectAsState()
     val soups by viewModel.soups.collectAsState()
-    val allRecipeIds = mainCourses.map { it.id }.toSet() + soups.map { it.id }.toSet()
+    val allRecipeIds = mainCourses.map { it.recipe.id }.toSet() + soups.map { it.recipe.id }.toSet()
 
     var isSearching by remember { mutableStateOf(false) }
     var searchValue by remember { mutableStateOf("") }
