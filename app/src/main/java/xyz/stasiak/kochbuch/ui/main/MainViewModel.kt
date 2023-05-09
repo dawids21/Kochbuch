@@ -5,17 +5,18 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
-import xyz.stasiak.kochbuch.data.Recipe
+import xyz.stasiak.kochbuch.data.RecipeWithIngredientsAndSteps
 import xyz.stasiak.kochbuch.data.RecipesRepository
 
 class MainViewModel(recipesRepository: RecipesRepository) : ViewModel() {
-    val mainCourses: StateFlow<List<Recipe>> = recipesRepository.getAllMainCourses()
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
-            initialValue = emptyList()
-        )
-    val soups: StateFlow<List<Recipe>> = recipesRepository.getAllSoups()
+    val mainCourses: StateFlow<List<RecipeWithIngredientsAndSteps>> =
+        recipesRepository.getAllMainCourses()
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
+                initialValue = emptyList()
+            )
+    val soups: StateFlow<List<RecipeWithIngredientsAndSteps>> = recipesRepository.getAllSoups()
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),

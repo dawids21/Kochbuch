@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -29,6 +30,7 @@ class TabletMainViewModel(recipesRepository: RecipesRepository) : ViewModel() {
     }
 
     val mainCourses: StateFlow<List<Recipe>> = recipesRepository.getAllMainCourses()
+        .map { it.map { recipe -> recipe.recipe } }
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
@@ -36,6 +38,7 @@ class TabletMainViewModel(recipesRepository: RecipesRepository) : ViewModel() {
         )
 
     val soups: StateFlow<List<Recipe>> = recipesRepository.getAllSoups()
+        .map { it.map { recipe -> recipe.recipe } }
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),

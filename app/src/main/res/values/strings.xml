@@ -15,4 +15,13 @@
     <string name="back_button">Go back</string>
     <string name="recipe">%1$s</string>
     <string name="calories">Kaloryczność porcji: %1$d</string>
+    <string name="welcome">Witamy w Kochbuch!</string>
+    <string name="app_info">Jedyna aplikacja, która pozwoli ci zostać mistrzem kuchni!</string>
+    <string name="functions">Funkcje:</string>
+    <string name="soup_function">1. Przepisy na najlepsze zupy świata</string>
+    <string name="main_course_function">2. Przepisy na najlepsze dania główne świata</string>
+    <string name="shopping_list">3. Lista zakupów</string>
+    <string name="step_list">4. Lista kroków jak przygotować danie</string>
+    <string name="timer">5. Minutnik</string>
+    <string name="random_recipe">Wybierz losowy przepis</string>
 </resources>
