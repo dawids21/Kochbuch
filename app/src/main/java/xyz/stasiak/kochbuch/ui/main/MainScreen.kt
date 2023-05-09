@@ -3,8 +3,11 @@ package xyz.stasiak.kochbuch.ui.main
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FractionalThreshold
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberSwipeableState
 import androidx.compose.material.swipeable
@@ -14,6 +17,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -21,6 +25,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import xyz.stasiak.kochbuch.R
 import xyz.stasiak.kochbuch.ui.AppViewModelProvider
 import xyz.stasiak.kochbuch.ui.KochbuchTopAppBar
 import xyz.stasiak.kochbuch.ui.main.info.BottomInfoDestination
@@ -39,6 +44,7 @@ fun MainScreen(
 ) {
     val mainCourses by viewModel.mainCourses.collectAsState()
     val soups by viewModel.soups.collectAsState()
+    val allRecipeIds = mainCourses.map { it.id }.toSet() + soups.map { it.id }.toSet()
 
     val swipeableState = rememberSwipeableState(initialValue = 0)
     val sizePx = with(LocalDensity.current) { 200.dp.toPx() }
@@ -74,7 +80,16 @@ fun MainScreen(
         topBar = {
             KochbuchTopAppBar(
                 title = currentDestination?.let { stringResource(id = it.titleRes) } ?: "",
-                canNavigateBack = false
+                canNavigateBack = false,
+                actions = {
+                    IconButton(onClick = { navigateToRecipe(allRecipeIds.random()) }) {
+                        Icon(
+                            painterResource(id = R.drawable.random_recipe),
+                            contentDescription = stringResource(R.string.random_recipe),
+                            modifier = Modifier.width(32.dp),
+                        )
+                    }
+                }
             )
         },
         bottomBar = { MainBottomBar(navController = navController) },
