@@ -45,7 +45,7 @@
     - [x] Dodanie do paska aplikacji opcji wyszukiwania przepisów, które zawierają dany składnik\*
     - [x] Własne ikony związane z akcją\*
     - [ ] Szuflada nawigacyjna\*
-    - [ ] Własna ikona dla aplikacji\*
+    - [x] Własna ikona dla aplikacji\*
 - [ ] Animacje
     - [x] Ma się opierać na systemie animacji właściwości (ObjectAnimator)
     - [x] Kod w kotlinie\*
