@@ -23,4 +23,5 @@
     <string name="shopping_list">3. Lista zakupów</string>
     <string name="step_list">4. Lista kroków jak przygotować danie</string>
     <string name="timer">5. Minutnik</string>
+    <string name="random_recipe">Wybierz losowy przepis</string>
 </resources>

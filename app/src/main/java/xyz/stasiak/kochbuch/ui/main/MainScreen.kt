@@ -3,17 +3,26 @@ package xyz.stasiak.kochbuch.ui.main
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FractionalThreshold
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.rememberSwipeableState
 import androidx.compose.material.swipeable
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -21,8 +30,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import xyz.stasiak.kochbuch.R
 import xyz.stasiak.kochbuch.ui.AppViewModelProvider
 import xyz.stasiak.kochbuch.ui.KochbuchTopAppBar
+import xyz.stasiak.kochbuch.ui.SearchTopAppBar
 import xyz.stasiak.kochbuch.ui.main.info.BottomInfoDestination
 import xyz.stasiak.kochbuch.ui.main.info.InfoScreen
 import xyz.stasiak.kochbuch.ui.main.recipes.BottomMainCourseDestination
@@ -39,6 +50,25 @@ fun MainScreen(
 ) {
     val mainCourses by viewModel.mainCourses.collectAsState()
     val soups by viewModel.soups.collectAsState()
+    val allRecipeIds = mainCourses.map { it.id }.toSet() + soups.map { it.id }.toSet()
+
+    var isSearching by remember { mutableStateOf(false) }
+    var searchValue by remember { mutableStateOf("") }
+
+    val filteredMainCourses = mainCourses.filter { recipeWithIngredients ->
+        recipeWithIngredients.ingredients.any {
+            it.name.lowercase().contains(
+                searchValue.lowercase()
+            )
+        }
+    }
+    val filteredSoups = soups.filter { recipeWithIngredients ->
+        recipeWithIngredients.ingredients.any {
+            it.name.lowercase().contains(
+                searchValue.lowercase()
+            )
+        }
+    }
 
     val swipeableState = rememberSwipeableState(initialValue = 0)
     val sizePx = with(LocalDensity.current) { 200.dp.toPx() }
@@ -72,12 +102,44 @@ fun MainScreen(
     }
     Scaffold(
         topBar = {
-            KochbuchTopAppBar(
-                title = currentDestination?.let { stringResource(id = it.titleRes) } ?: "",
-                canNavigateBack = false
-            )
+            if (isSearching) {
+                SearchTopAppBar(
+                    value = searchValue,
+                    onValueChange = { searchValue = it },
+                    onBackClicked = {
+                        isSearching = false
+                        searchValue = ""
+                    })
+            } else {
+                KochbuchTopAppBar(
+                    title = currentDestination?.let { stringResource(id = it.titleRes) } ?: "",
+                    canNavigateBack = false,
+                    actions = {
+                        if (currentDestination != BottomInfoDestination) {
+                            IconButton(onClick = { isSearching = true }) {
+                                Icon(
+                                    Icons.Filled.Search,
+                                    contentDescription = "Search for recipe with given ingredient"
+                                )
+                            }
+                        }
+                        IconButton(onClick = { navigateToRecipe(allRecipeIds.random()) }) {
+                            Icon(
+                                painterResource(id = R.drawable.random_recipe),
+                                contentDescription = stringResource(R.string.random_recipe),
+                                modifier = Modifier.width(32.dp),
+                            )
+                        }
+                    }
+                )
+            }
         },
-        bottomBar = { MainBottomBar(navController = navController) },
+        bottomBar = {
+            MainBottomBar(navController = navController, beforeNavigation = {
+                isSearching = false
+                searchValue = ""
+            })
+        },
         modifier = modifier.swipeable(
             state = swipeableState,
             anchors = anchors,
@@ -94,10 +156,16 @@ fun MainScreen(
                 InfoScreen()
             }
             composable(route = BottomSoupDestination.route) {
-                RecipeScreen(recipes = soups, navigateToRecipe = navigateToRecipe)
+                RecipeScreen(
+                    recipes = filteredSoups.map { it.recipe },
+                    navigateToRecipe = navigateToRecipe
+                )
             }
             composable(route = BottomMainCourseDestination.route) {
-                RecipeScreen(recipes = mainCourses, navigateToRecipe = navigateToRecipe)
+                RecipeScreen(
+                    recipes = filteredMainCourses.map { it.recipe },
+                    navigateToRecipe = navigateToRecipe
+                )
             }
         }
     }

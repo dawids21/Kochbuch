@@ -27,7 +27,9 @@ fun RecipeDetailsScreen(
 ) {
     val recipeDetailsUiState by viewModel.recipe.collectAsState()
     val timerStates = viewModel.timerStates
-    val ingredientsToShare = recipeDetailsUiState.ingredients.joinToString(separator = "\n") { it.name }
+    val shareDataCreator = ShareDataCreator()
+    val ingredientsToShare = shareDataCreator.dataCreator(recipeDetailsUiState)
+//        recipeDetailsUiState.ingredients.joinToString(separator = "\n") { it.name }
     val sendIntent: Intent = Intent().apply {
         action = Intent.ACTION_SEND
         putExtra(Intent.EXTRA_TEXT, ingredientsToShare)
