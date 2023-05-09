@@ -3,11 +3,11 @@ package xyz.stasiak.kochbuch.data
 import kotlinx.coroutines.flow.Flow
 
 class OfflineRecipesRepository(private val recipeDao: RecipeDao) : RecipesRepository {
-    override fun getAllMainCourses(): Flow<List<Recipe>> {
+    override fun getAllMainCourses(): Flow<List<RecipeWithIngredientsAndSteps>> {
         return recipeDao.getAllMainCourses()
     }
 
-    override fun getAllSoups(): Flow<List<Recipe>> {
+    override fun getAllSoups(): Flow<List<RecipeWithIngredientsAndSteps>> {
         return recipeDao.getAllSoups()
     }
 
