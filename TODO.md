@@ -8,7 +8,7 @@
     - [x] Dodanie do szczegółów\*:
         - [x] Przelicznika ilości składników według porcji
         - [x] Info o kaloryczności
-- [ ] Aplikacja typu lista-szczegoły - wersja na tablety
+- [x] Aplikacja typu lista-szczegoły - wersja na tablety
 - [ ] Dodanie fragmentu dynamicznego
     - [x] Dodać fragment minutnika
     - [x] Minutnik ma wyświetlać czas z dokładnością do sekundy
