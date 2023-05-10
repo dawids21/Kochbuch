@@ -28,13 +28,13 @@ fun KochbuchNavHost(
     ) {
         composable(route = MainDestination.route) {
             if (layoutType == LayoutType.TABLET) {
-                TabletMainScreen(navController = rememberNavController())
+                TabletMainScreen(navController = rememberNavController(), layoutType = layoutType)
             } else {
                 MainScreen(navController = rememberNavController(), navigateToRecipe = {
                     navController.navigate(
                         "${RecipeDetailsDestination.route}/${it}"
                     )
-                })
+                }, layoutType = layoutType)
             }
         }
         composable(

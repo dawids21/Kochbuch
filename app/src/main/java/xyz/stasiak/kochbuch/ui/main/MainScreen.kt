@@ -1,6 +1,5 @@
 package xyz.stasiak.kochbuch.ui.main
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -31,6 +30,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import xyz.stasiak.kochbuch.R
+import xyz.stasiak.kochbuch.LayoutType
 import xyz.stasiak.kochbuch.ui.AppViewModelProvider
 import xyz.stasiak.kochbuch.ui.KochbuchTopAppBar
 import xyz.stasiak.kochbuch.ui.SearchTopAppBar
@@ -40,11 +40,12 @@ import xyz.stasiak.kochbuch.ui.main.recipes.BottomMainCourseDestination
 import xyz.stasiak.kochbuch.ui.main.recipes.BottomSoupDestination
 import xyz.stasiak.kochbuch.ui.main.recipes.RecipeScreen
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MainScreen(
     navController: NavHostController,
     navigateToRecipe: (Int) -> Unit,
+    layoutType: LayoutType,
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
@@ -153,7 +154,7 @@ fun MainScreen(
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(route = BottomInfoDestination.route) {
-                InfoScreen()
+                InfoScreen(layoutType = layoutType)
             }
             composable(route = BottomSoupDestination.route) {
                 RecipeScreen(

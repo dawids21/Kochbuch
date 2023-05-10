@@ -25,7 +25,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
-fun InfoAnimation(size: Dp) {
+fun InfoAnimation(size: Dp, modifier: Modifier = Modifier) {
     val spoonPosition = remember {
         Animatable(0f)
     }
@@ -81,7 +81,7 @@ fun InfoAnimation(size: Dp) {
         }
     }
     val color = MaterialTheme.colors.primary
-    Canvas(modifier = Modifier.size(size),
+    Canvas(modifier = modifier.size(size),
         onDraw = {
             val sizePx = size.toPx()
             val xPosition = sizePx / 5 + spoonPosition.value * (sizePx * 3 / 5 - sizePx / 8)

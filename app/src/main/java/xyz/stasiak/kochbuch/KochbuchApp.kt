@@ -13,11 +13,20 @@ fun KochbuchApp(
     heightSizeClass: WindowHeightSizeClass,
     navController: NavHostController = rememberNavController()
 ) {
-    //TODO change after testing
-//    if (widthSizeClass == WindowWidthSizeClass.Compact && heightSizeClass == WindowHeightSizeClass.Compact) {
-    if (heightSizeClass != WindowHeightSizeClass.Compact) {
-        KochbuchNavHost(layoutType = LayoutType.PHONE, navController = navController)
-    } else {
-        KochbuchNavHost(layoutType = LayoutType.TABLET, navController = navController)
-    }
+    val isCompactMedium =
+        widthSizeClass == WindowWidthSizeClass.Compact && heightSizeClass >= WindowHeightSizeClass.Medium
+    val isMediumCompact =
+        widthSizeClass >= WindowWidthSizeClass.Medium && heightSizeClass == WindowHeightSizeClass.Compact
+
+    val layoutType =
+        if (isCompactMedium)
+            LayoutType.PHONE
+        else if (isMediumCompact)
+            LayoutType.PHONE_LANDSCAPE
+        else
+            LayoutType.TABLET
+    KochbuchNavHost(
+        layoutType = layoutType,
+        navController = navController
+    )
 }

@@ -54,68 +54,63 @@ fun RecipeDetailsBody(
         }
         return
     }
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-    ) {
-        Image(
-            painter = painterResource(id = recipe.image),
-            contentDescription = null,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(300.dp)
-                .clip(shape = RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp)),
-            contentScale = ContentScale.Crop
-        )
-        Text(
-            text = recipe.name,
-            modifier = Modifier
-                .padding(horizontal = 16.dp, vertical = 16.dp)
-                .fillMaxWidth(),
-            style = MaterialTheme.typography.h5
-        )
-        var numberOfPortions by remember { mutableStateOf(1) }
-        PortionCounter(
-            numberOfPortions = numberOfPortions,
-            onPlusClicked = {
-                if (numberOfPortions > 1)
-                    numberOfPortions--
-            },
-            onMinusClicked = {
-                if (numberOfPortions < 10)
-                    numberOfPortions++
-            }
-        )
-        Text(
-            text = stringResource(R.string.calories, recipe.calories),
-            modifier = Modifier
-                .padding(horizontal = 16.dp, vertical = 8.dp)
-                .fillMaxWidth(),
-            style = MaterialTheme.typography.h6
-        )
-        Text(
-            text = stringResource(R.string.ingredients),
-            modifier = Modifier
-                .padding(horizontal = 16.dp, vertical = 8.dp)
-                .fillMaxWidth(),
-            style = MaterialTheme.typography.h6
-        )
-        ingredients.forEach { ingredient ->
-            RecipeIngredientItem(ingredient, numberOfPortions = numberOfPortions)
+    Image(
+        painter = painterResource(id = recipe.image),
+        contentDescription = null,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(300.dp)
+            .clip(shape = RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp)),
+        contentScale = ContentScale.Crop
+    )
+    Text(
+        text = recipe.name,
+        modifier = Modifier
+            .padding(horizontal = 16.dp, vertical = 16.dp)
+            .fillMaxWidth(),
+        style = MaterialTheme.typography.h5
+    )
+    var numberOfPortions by remember { mutableStateOf(1) }
+    PortionCounter(
+        numberOfPortions = numberOfPortions,
+        onPlusClicked = {
+            if (numberOfPortions > 1)
+                numberOfPortions--
+        },
+        onMinusClicked = {
+            if (numberOfPortions < 10)
+                numberOfPortions++
         }
-        Text(
-            text = stringResource(R.string.steps),
-            modifier = Modifier
-                .padding(horizontal = 16.dp, vertical = 8.dp)
-                .fillMaxWidth(),
-            style = MaterialTheme.typography.h6
+    )
+    Text(
+        text = stringResource(R.string.calories, recipe.calories),
+        modifier = Modifier
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .fillMaxWidth(),
+        style = MaterialTheme.typography.h6
+    )
+    Text(
+        text = stringResource(R.string.ingredients),
+        modifier = Modifier
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .fillMaxWidth(),
+        style = MaterialTheme.typography.h6
+    )
+    ingredients.forEach { ingredient ->
+        RecipeIngredientItem(ingredient, numberOfPortions = numberOfPortions)
+    }
+    Text(
+        text = stringResource(R.string.steps),
+        modifier = Modifier
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .fillMaxWidth(),
+        style = MaterialTheme.typography.h6
+    )
+    steps.forEach { step ->
+        RecipeStepItem(
+            step = step,
+            timerState = timerStates[step]!!,
+            onTimerEvent = onTimerEvent,
         )
-        steps.forEach { step ->
-            RecipeStepItem(
-                step = step,
-                timerState = timerStates[step]!!,
-                onTimerEvent = onTimerEvent,
-            )
-        }
     }
 }
