@@ -94,6 +94,9 @@ fun TabletMainScreen(
                     )
                 }
             }
+
+            val scrollState = rememberScrollState()
+
             Column(
                 modifier = modifier
                     .fillMaxSize()
@@ -106,7 +109,8 @@ fun TabletMainScreen(
                     steps = recipeDetailsUiState.steps,
                     timerStates = timerStates,
                     onTimerEvent = viewModel::onTimerEvent,
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f),
+                    scrollState = scrollState
                 )
             }
         }

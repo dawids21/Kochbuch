@@ -22,10 +22,13 @@ fun RecipeDetailsBodyWithAppBar(
     navigateUp: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+
+    val scrollState = rememberScrollState()
+
     Column(
         modifier = modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
+            .verticalScroll(scrollState)
     ) {
         KochbuchTopAppBar(
             title = stringResource(
@@ -41,6 +44,7 @@ fun RecipeDetailsBodyWithAppBar(
             steps = steps,
             timerStates = timerStates,
             onTimerEvent = onTimerEvent,
+            scrollState = scrollState
         )
     }
 }
