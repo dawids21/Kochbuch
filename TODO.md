@@ -9,7 +9,7 @@
         - [x] Przelicznika ilości składników według porcji
         - [x] Info o kaloryczności
 - [x] Aplikacja typu lista-szczegoły - wersja na tablety
-- [ ] Dodanie fragmentu dynamicznego
+- [x] Dodanie fragmentu dynamicznego
     - [x] Dodać fragment minutnika
     - [x] Minutnik ma wyświetlać czas z dokładnością do sekundy
     - [x] Działa poprawnie po zmianie orientacji
@@ -18,11 +18,11 @@
         - [x] Start - uruchom odliczanie
         - [x] Stop - Wyłącz odliczanie po dojściu do zera
         - [x] Przerwij - Wyłącz odliczanie w dowolnym momencie
-    - [ ] Sygnał dźwiękowy po dojściu do zera
+    - [x] Sygnał dźwiękowy po dojściu do zera
     - [x] Możliwość dostosowania wartości minutnika
     - [x] Kod w kotlinie\*
     - [x] Możliwość uruchomienia kilku minutników jednocześnie\*
-    - [ ] Narastający dźwięk\*
+    - [x] Narastający dźwięk\*
     - [x] Użycie ikon na przyciskach\*
 - [ ] Użycie biblioteki
     - [x] Ekran list składa się z trzech kart: info, zupy, dania główne
