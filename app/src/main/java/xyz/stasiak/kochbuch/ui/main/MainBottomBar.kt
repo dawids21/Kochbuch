@@ -15,7 +15,7 @@ import xyz.stasiak.kochbuch.ui.main.recipes.BottomMainCourseDestination
 import xyz.stasiak.kochbuch.ui.main.recipes.BottomSoupDestination
 
 @Composable
-fun MainBottomBar(navController: NavController) {
+fun MainBottomBar(navController: NavController, beforeNavigation: () -> Unit = {}) {
     val items = listOf(
         BottomInfoDestination, BottomSoupDestination, BottomMainCourseDestination
     )
@@ -37,6 +37,7 @@ fun MainBottomBar(navController: NavController) {
                 alwaysShowLabel = true,
                 selected = currentRoute == item.route,
                 onClick = {
+                    beforeNavigation()
                     navController.navigate(item.route) {
                         navController.graph.startDestinationRoute?.let { screenRoute ->
                             popUpTo(screenRoute) {
