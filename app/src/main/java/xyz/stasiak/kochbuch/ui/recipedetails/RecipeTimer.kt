@@ -39,8 +39,8 @@ fun RecipeTimer(
     onTimerEvent: (TimerEvent) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var minutesInput by rememberSaveable { mutableStateOf(timerState.minutes.toString()) }
-    var secondsInput by rememberSaveable { mutableStateOf(timerState.seconds.toString()) }
+    var minutesInput by rememberSaveable { mutableStateOf(if (timerState.minutes == 0) "" else timerState.minutes.toString()) }
+    var secondsInput by rememberSaveable { mutableStateOf(if (timerState.seconds == 0) "" else timerState.seconds.toString()) }
     if (step.time != 0) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

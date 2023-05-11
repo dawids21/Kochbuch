@@ -1,7 +1,9 @@
 package xyz.stasiak.kochbuch.ui.tablet
 
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -21,7 +23,6 @@ import xyz.stasiak.kochbuch.data.RecipesRepository
 import xyz.stasiak.kochbuch.ui.recipedetails.RecipeDetailsUiState
 import xyz.stasiak.kochbuch.ui.recipedetails.TimerEvent
 import xyz.stasiak.kochbuch.ui.recipedetails.TimerUiState
-import xyz.stasiak.kochbuch.ui.recipedetails.playSound
 
 class TabletMainViewModel(recipesRepository: RecipesRepository) : ViewModel() {
 
@@ -59,6 +60,9 @@ class TabletMainViewModel(recipesRepository: RecipesRepository) : ViewModel() {
         )
 
     val timerStates = mutableStateMapOf<RecipeStep, TimerUiState>()
+
+    var isSoundPlaying by mutableStateOf(false)
+        private set
 
     init {
         viewModelScope.launch {
@@ -101,12 +105,11 @@ class TabletMainViewModel(recipesRepository: RecipesRepository) : ViewModel() {
                     )
                 }
             }
-            playSound()
+            isSoundPlaying = true
         }
         timerStates[step] = timerState.copy(job = job, isRunning = true)
     }
 
-    // TODO poprawić działanie, powinno przerywać w dowolnym momencie i restartować
     private fun pauseTimer(step: RecipeStep) {
         val timerState = timerStates[step]!!
         if (!timerState.isRunning) {
@@ -116,7 +119,6 @@ class TabletMainViewModel(recipesRepository: RecipesRepository) : ViewModel() {
         timerStates[step] = timerState.copy(isRunning = false)
     }
 
-    // TODO powinno być możliwe do kliknięcia dopiero po dojściu do zera i powinno przerywać dżwięk
     private fun stopTimer(step: RecipeStep) {
         val timerState = timerStates[step]!!
         if (!timerState.isRunning) {
@@ -124,6 +126,9 @@ class TabletMainViewModel(recipesRepository: RecipesRepository) : ViewModel() {
         }
         timerState.job?.cancel()
         timerStates[step] = timerState.copy(minutes = step.time * 60, isRunning = false)
+        if (timerStates.values.none { it.isRunning }) {
+            isSoundPlaying = false
+        }
     }
 
     private fun setTimerValue(step: RecipeStep, minutes: Int, seconds: Int) {

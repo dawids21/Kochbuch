@@ -1,6 +1,9 @@
 package xyz.stasiak.kochbuch.ui.recipedetails
 
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -21,6 +24,8 @@ class RecipeDetailsViewModel(
         private const val TIMEOUT_MILLIS = 5_000L
     }
 
+//    private val soundPlayer = SoundPlayer(LocalContext.current)
+
     val recipe: StateFlow<RecipeDetailsUiState> =
         recipesRepository.getRecipe(
             savedStateHandle[RecipeDetailsDestination.recipeId] ?: 1
@@ -33,6 +38,9 @@ class RecipeDetailsViewModel(
             )
 
     val timerStates = mutableStateMapOf<RecipeStep, TimerUiState>()
+
+    var isSoundPlaying by mutableStateOf(false)
+        private set
 
     init {
         viewModelScope.launch {
@@ -71,7 +79,7 @@ class RecipeDetailsViewModel(
                     )
                 }
             }
-            playSound()
+            isSoundPlaying = true
         }
         timerStates[step] = timerState.copy(job = job, isRunning = true)
     }
@@ -92,6 +100,9 @@ class RecipeDetailsViewModel(
         }
         timerState.job?.cancel()
         timerStates[step] = timerState.copy(minutes = step.time, seconds = 0, isRunning = false)
+        if (timerStates.values.none { it.isRunning }) {
+            isSoundPlaying = false
+        }
     }
 
     private fun setTimerValue(step: RecipeStep, minutes: Int, seconds: Int) {
@@ -99,8 +110,3 @@ class RecipeDetailsViewModel(
     }
 }
 
-fun playSound() {
-    // TODO: implement sound playing logic here
-    // TODO przenieść do osobnego pliku
-    // TODO narastający dżwięk
-}
