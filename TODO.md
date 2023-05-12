@@ -35,7 +35,7 @@
     - [x] Działa poprawnie po zmianie orientacji
     - [x] Każdy ekran ma mieć pasek aplikacji w postaci paska narzędzi
     - [x] Ekran szczegółów jest przewijany w pionie razem z paskiem aplikacji
-    - [ ] Obrazek na ekranie szczegółów ma się pojawić na pasku aplikacji, ale ma się razem z nim
+    - [X] Obrazek na ekranie szczegółów ma się pojawić na pasku aplikacji, ale ma się razem z nim
       zwijać
     - [x] Przechodzenie między kartami ma się odbywać za pomocą gestu przeciągnięcia
     - [x] Kod w kotlinie\*
