@@ -5,12 +5,16 @@ import android.media.MediaPlayer
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
@@ -26,8 +30,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -42,6 +50,7 @@ import xyz.stasiak.kochbuch.ui.main.recipes.BottomMainCourseDestination
 import xyz.stasiak.kochbuch.ui.main.recipes.BottomSoupDestination
 import xyz.stasiak.kochbuch.ui.main.recipes.RecipeScreen
 import xyz.stasiak.kochbuch.ui.recipedetails.RecipeDetailsBody
+import xyz.stasiak.kochbuch.ui.recipedetails.ShareDataCreator
 
 @Composable
 fun TabletMainScreen(
@@ -57,8 +66,8 @@ fun TabletMainScreen(
     val timerStates = viewModel.timerStates
     val isSoundPlaying = viewModel.isSoundPlaying
     val mediaPlayer by remember { mutableStateOf(MediaPlayer.create(context, R.raw.ringtone)) }
-    val ingredientsToShare =
-        recipeDetailsUiState.ingredients.joinToString(separator = "\n") { it.name }
+    val shareDataCreator = ShareDataCreator()
+    val ingredientsToShare = shareDataCreator.dataCreator(recipeDetailsUiState)
     val sendIntent: Intent = Intent().apply {
         action = Intent.ACTION_SEND
         putExtra(Intent.EXTRA_TEXT, ingredientsToShare)
@@ -141,6 +150,22 @@ fun TabletMainScreen(
                     .verticalScroll(rememberScrollState())
                     .weight(1f)
             ) {
+                if (recipeDetailsUiState.recipe.id != 0) {
+                    Image(
+                        painter = painterResource(id = recipeDetailsUiState.recipe.image),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(300.dp)
+                            .clip(
+                                shape = RoundedCornerShape(
+                                    bottomStart = 16.dp,
+                                    bottomEnd = 16.dp
+                                )
+                            )
+                    )
+                }
                 RecipeDetailsBody(
                     recipe = recipeDetailsUiState.recipe,
                     ingredients = recipeDetailsUiState.ingredients,
